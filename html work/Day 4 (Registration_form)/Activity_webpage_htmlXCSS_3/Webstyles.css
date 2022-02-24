@@ -1,0 +1,39 @@
+*{
+    background-color: cyan;
+}
+.header{
+    text-align: center;
+    border: 1px solid crimson;
+    border-radius: 1em;
+    background-color: chartreuse;
+    padding: 10px;
+    padding-bottom: 1em;
+   
+}
+#tree{
+    display: inline-block; 
+    
+}
+p{
+    display:inline-block ; padding: 1%; width: 19%;
+    border: 1px solid black;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: blanchedalmond;
+}
+
+.links{
+    color: crimson;
+    text-align: right; 
+}
+.links :hover{
+    color: red;}
+
+
+.footer{
+    text-align: center;
+    border: 1px solid crimson;
+    border-radius: 1em;
+    background-color:blueviolet;
+    padding: 10px;
+
+}
