@@ -6,9 +6,9 @@
     border: 1px solid crimson;
     border-radius: 1em;
     background-color: chartreuse;
-    padding: 10px;
+    padding: 5px;
     padding-bottom: 1em;
-   
+    
 }
 #tree{
     display: inline-block; 
@@ -20,15 +20,31 @@ p{
     font-family: 'Times New Roman', Times, serif;
     background-color: blanchedalmond;
 }
-
+p::first-letter{
+    font-weight: bold;
+    font-size: larger;
+}
 .links{
     color: crimson;
     text-align: right; 
+    font-size: large;
+    
 }
-.links :hover{
-    color: red;}
-
-
+a:link {
+    background-color: yellow;
+  }
+  
+a:visited {
+    background-color: cyan;
+}
+  
+a:hover {
+    background-color: lightgreen;
+}
+  
+a:active {
+    background-color: hotpink;
+} 
 .footer{
     text-align: center;
     border: 1px solid crimson;
@@ -36,4 +52,17 @@ p{
     background-color:blueviolet;
     padding: 10px;
 
+}
+#mydiv{
+    background-color: red;
+    animation: mymove 5s infinite;
+    color: white;
+}
+@keyframes mymove{
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+    }
 }
