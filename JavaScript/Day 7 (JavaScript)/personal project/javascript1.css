@@ -1,0 +1,79 @@
+body{
+    margin: 1em;
+    background-color: rgb(31, 30, 30);
+    color: white;
+}
+#h_1{
+    border: 2px solid black;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    float: left;
+    text-align: center;
+}
+div{
+    border: 3px solid black;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    float: left;
+    background-color: rgb(51, 5, 5);
+
+}
+/*Calculator*/
+#zero{
+    list-style: none;
+    border: 1px solid black;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-left: 7em;
+
+}
+#three{
+    list-style: none;
+    border: 1px solid black;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-left:7em;
+}
+#nine{
+    list-style: none;
+    border: 1px solid black;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-left: 7em;
+}
+#two{
+    list-style: none;
+    border: 1px solid black;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-left:7em;
+}
+
+/*youtube back picker*/
+#purple{
+    border: 2px solid purple;
+    width: 75px;
+    height: 75px;
+    background-color: purple;
+}
+#green{
+    border: 2px solid green;
+    width: 75px;
+    height: 75px;
+    background-color: green;
+
+}
+#blue{
+    border: 2px solid blue;
+    width: 75px;
+    height: 75px;
+    background-color: blue;
+}

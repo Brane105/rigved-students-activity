@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern</title>
+    <style>
+        div{
+            border: 2px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 0%;
+            display: flex;
+            float: left;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(39, 38, 38); color: white;">
+    <h1 style="border: 1px solid black; background-color: black; color: rgb(201, 111, 111); text-align: center;">ACTIVITY DAY 7 - javascript</h1>
+    <div>
+        <h5>pattern1</h5>
+        <script type="text/javascript" >
+            for (var i=0;i<=10;i++) {
+                for (var j=1;j<=i-1;j++){
+                    document.write("*"+" ");
+                }
+                document.write("<br/>")
+            }
+        </script>
+    </div>
+    
+    <div>
+        <h4>Odd Numbers</h4>
+        <script type="text/javascript" >
+            //odd numbers 
+            for(i=1;i<=10;i++){
+            if (i%2 == 1){
+                document.write("oddnumber = "+i)
+            }
+            document.write("<br/>")
+        }
+    </script>
+    </div>
+    <div>
+        <h5>Even numbers</h5>
+        <script type="text/javascript" >
+            //even numbers 
+                for(i=1;i<=10;i++){
+                if (i%2 == 0){
+                    document.write("oddnumber = "+i)
+                }
+                document.write("<br />")
+            }
+            </script>
+    </div>
+    <div>
+        <h5>greatest</h5><br/><br/>
+        <script type="text/javascript" >
+        document.write('arr=[10, -3, 50, -2, 70, 40, 60]')
+        document.write("<br/>")
+            function largest(arr) {
+                let i;
+                let max = arr[0];
+                for (i = 1; i < arr.length; i++) {
+                    if (arr[i] > max)
+                        max = arr[i];
+                }  
+            return max;
+        }
+     
+    let arr = [10, -3, 50, -2, 70, 40, 60];
+    document.write("Largest in given array is " + largest(arr));
+    document.write("<br/>")
+
+    var arr1 = [10, -3, 50, -2, 70, 40, 60];
+		var smallest = arr1[0];
+		for(var i=1; i<arr.length; i++){
+			if(arr1[i] < smallest){
+				smallest = arr1[i];   
+			}
+		}
+    document.write("Smallest in given array is " +smallest);
+    document.write("<br/>")
+            </script>
+            
+    </div>
+    <div>
+        <center>
+        <script type="text/javascript" >
+    
+            //Pattern
+            document.write("<h3>pattern2</h3>")
+            for (var i=0;i<=5;i++){
+                for(var j=0;j<=i;j++){
+                    document.write("*"+" ")
+                }
+                document.write("<br />")
+            }
+            </script>
+            </center>
+    </div>
+    <div>
+        <center>
+            <h5 style="margin-top: 0%;"> pattern3</h5>
+        <script type="text/javascript" >
+            //diamond
+
+                let n = 5;
+            let string = "";
+            for (let i = 1; i <= n; i++) {
+            // printing spaces
+            for (let j = n; j > i; j--) {
+                string += " ";
+            }
+            for (let k = 0; k < i * 2 - 1; k++) {
+                string += "*";
+            }
+            string += "<br/>";
+            }
+            for (let i = 1; i <= n - 1; i++) {
+            // printing spaces
+            for (let j = 0; j < i; j++) {
+                string += " ";
+            }
+        
+            for (let k = (n - i) * 2 - 1; k > 0; k--) {
+                string += "*";
+            }
+            string += "<br/>";
+            }
+            document.write(string);
+            </script>
+            </center>
+    </div>
+    <div>
+        <h5>pattern 5</h5>
+        <center>
+            <br/><br/><br/>
+        <script type="text/javascript">
+            let m = 5;
+                let string1 = "";
+                // External loop
+                for (let i = 0; i < m; i++) {
+               
+                for (let j = 0; j < i; j++) {
+                    string1 += " ";
+                }
+              
+                for (let l = 0; l < 2 * (m-i) - 1; l++) {
+                    string1 += "*";
+                }
+                string1 += "<br />";
+                }
+                document.write(string1);
+        </script>
+        </center>
+    </div>
+        
+    
+    
+    
+</body>
+</html>
