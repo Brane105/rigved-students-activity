@@ -46,7 +46,8 @@
             var email = document.reg_form.email;
             var password = document.reg_form.password;
             var Cpassword =document.reg_form.Cpassword;    
-            var mobile = document.reg_form.mobile;   
+            var mobile = document.reg_form.mobile; 
+            var technology = document.reg_form.tech;
             var course = document.reg_form.course;  
        
     
@@ -86,9 +87,15 @@
                 mobile.focus();    
                 return false;    
             } 
-            if (document.getElementById("technical").checked = false) {
-        
-            alert("you didnt checked the box.");
+            var flag = false;
+            for(var i = 0; i < technology.length;i++){
+                if(technology[i].checked){
+                    flag=true;
+                }
+                if(flag == false){
+                    alert("atleast one skill should be selected !");
+                    return false;
+                }
             }
              
             if (course.value == "select course") {    
@@ -137,19 +144,19 @@
             <tr>    
                 <td><label for="email">Email Id: </label></td>    
                 <td>    
-                    <input type="text" name="email" placeholder="example@gmail.com">    
+                    <input type="email" name="email" placeholder="example@gmail.com">    
                 </td>    
             </tr>    
             <tr>    
                 <td><label for="password">Password: </label></td>    
                 <td>    
-                    <input type="text" name="password" placeholder="S#ldove105">    
+                    <input type="password" name="password" placeholder="S#ldove105">    
                 </td>    
             </tr> 
             <tr>    
                 <td><label for="Cpassword">Confirm Password: </label></td>    
                 <td>    
-                    <input type="text" name="Cpassword" placeholder="S#ldove105">    
+                    <input type="password" name="Cpassword" placeholder="S#ldove105">    
                 </td>    
             </tr> 
             <tr>    
@@ -158,15 +165,25 @@
                     <input type="number" name="mobile">    
                 </td>    
             </tr> 
+            <!--Skills-->
             <tr>    
-            <td><label>Skills</label> </label></td>    
+            <td><label>Skills</label></label></td>    
             <td>    
-                <label for="technical">
-                    <input type="checkbox" id="technical" name="technical"/>
-                    Technical</label>
-                   
+                <!---technical-->
+                <label id="skill" name="skills">
+                <input type="checkbox" name="tech"/>
+                Technical
+            <!--computer-->
+                
+                <input type="checkbox" name="tech"/>
+                Computer
+        <!--coding-->
+                    
+                <input type="checkbox" name="tech"/>
+                Coding</label>
             </td>    
         </tr> 
+        <!--Course-->
             <tr>    
             <td><label>Course: </label></td>    
                 <td>    
