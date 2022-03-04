@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function User(name, age, phone){
+            this.name = name;
+            this.age = age;
+            this.phone = phone;
+        }
+        //name
+        User.prototype.getName = function(){
+            return this.name;
+        }   
+        User.prototype.setName = function(name){
+            this.name = name;
+        }
+        // Age
+        User.prototype.getAge = function(){
+            return this.age;
+        }
+        User.prototype.setAge = function(age){
+            this.age = age;
+        }
+        //Phone
+        User.prototype.getPhone = function(){
+            return this.phone;
+        }
+        User.prototype.setPhone = function(phone){
+            this.phone = phone;
+        }
+        var user1 =  new User("Alex",35,9023902390 );
+        //name get and set 
+        document.write('<p>Name : '+user1.getName()+'</p>');
+        user1.setName('Alexander');
+        document.write('<p>Name : '+user1.getName()+'</P>');
+        //age get and set
+        document.write('<p>Age : '+user1.getAge()+'</p>');
+        user1.setAge('40');
+        document.write('<p>Age : '+user1.getAge()+'</P>');
+        //Phone get and set 
+        document.write('<p>Phone : '+user1.getPhone()+'</p>');
+        user1.setPhone('7858585878');
+        document.write('<p>Phone : '+user1.getPhone()+'</P>');
+    </script>
+
+</body>
+</html>

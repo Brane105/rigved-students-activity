@@ -9,13 +9,12 @@
 <body>
     <h1>OTP CREATION</h1>
     <script>
-        var number = prompt("Enter either 4 or 6 to generate otp");
+        var number = prompt("What number do you like to pick for OTP 4 or 6 ?");
 
         function generateOTP(){
                 if(number!=4 && number!=6){
                     alert("OTP number cannot be any other number either 4 or 6!");
-                     return document.write("Try again ");
-                     
+                     return document.write("OTP not Generated.......Try Again !.....");
                 } 
             
                 var digits = '0123456789';
