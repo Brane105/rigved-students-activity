@@ -4,47 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate OTP</title>
-    <style>
-        body{
-            margin: 1em;
-            background-color:darkslategrey;
-            
-        }
-        div{
-            border: 1px solid black;
-            padding-bottom: 1em;
-            border-radius: 2em;
-            text-align: center;
-            width: 200px;
-            margin-left: 40%;
-            background-color: cadetblue;
-        }
-        button{
-            border: 1px solid black;
-            border-radius: 1em;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div>
-    <h3>Generate OTP</h3>
-    <p id="output"></p>
-    <button onclick="generate()">Generate OTP</button>
-    <script type="text/javascript">
-        function generate(){
-        var a=parseInt(prompt('Enter number of Digit for OTP'))
-        console.log(a)
-        if(a==4 || a==6){
-            b=Math.random()
-            c=10**a
-            out=parseInt(b*c)
-            document.getElementById('output').innerHTML=out
-        }else{
-            alert('Enter either 4 or 6 only to generate OTP')
+    <h1>OTP CREATION</h1>
+    <script>
+        var number = prompt("Enter either 4 or 6 to generate otp");
+
+        function generateOTP(){
+                if(number!=4 && number!=6){
+                    alert("OTP number cannot be any other number either 4 or 6!");
+                     return document.write("Try again ");
+                     
+                } 
+            
+                var digits = '0123456789';
+                let OTP = '';
+                for (let i = 0; i < number; i++ ) {
+                OTP += digits[Math.floor(Math.random() * 10)];
+                }
+            return OTP;
         }
-        }
-    </script>
-   </div>
+        
+        document.write("OTP of " + number + " digits : "+generateOTP());
+        </script>
 </body>
 </html>
