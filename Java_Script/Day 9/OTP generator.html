@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate OTP</title>
+    <style>
+        body{
+            margin: 1em;
+            background-color:darkslategrey;
+            
+        }
+        div{
+            border: 1px solid black;
+            padding-bottom: 1em;
+            border-radius: 2em;
+            text-align: center;
+            width: 200px;
+            margin-left: 40%;
+            background-color: cadetblue;
+        }
+        button{
+            border: 1px solid black;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h3>Generate OTP</h3>
+    <p id="output"></p>
+    <button onclick="generate()">Generate OTP</button>
+    <script type="text/javascript">
+        function generate(){
+        var a=parseInt(prompt('Enter number of Digit for OTP'))
+        console.log(a)
+        if(a==4 || a==6){
+            b=Math.random()
+            c=10**a
+            out=parseInt(b*c)
+            document.getElementById('output').innerHTML=out
+        }else{
+            alert('Enter either 4 or 6 only to generate OTP')
+        }
+        }
+    </script>
+   </div>
+</body>
+</html>
