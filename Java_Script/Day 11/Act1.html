@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h_1">The Heading Increasing and decreasing</h1>
+    <button onclick="change()">FSize Increase</button>
+    <button onclick="change1()">FSize Increase</button>
+    <script type="text/javascript">
+        function change(){
+         var ele = document.getElementById('h_1');
+            ele.style.fontSize = "100px";
+            ele.style.color ="purple"
+            ele.style.backgroundColor = 'skyblue'
+            ele.style.width = 'fit-content' 
+        }
+        function change1(){
+         var ele = document.getElementById('h_1');
+            ele.style.fontSize = "50px";
+            ele.style.color = "red"
+            ele.style.backgroundColor = 'yellow'
+            ele.style.width = 'fit-content' 
+        }
+         
+    </script>
+
+</body>
+</html>
