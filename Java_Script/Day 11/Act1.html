@@ -10,6 +10,8 @@
     <h1 id="h_1">The Heading Increasing and decreasing</h1>
     <button onclick="change()">FSize Increase</button>
     <button onclick="change1()">FSize Descrease</button>
+    <button onclick="change2()">FSize Increase</button>
+    <button onclick="change3()">FSize D</button>
     <script type="text/javascript">
         function change(){
          var ele = document.getElementById('h_1');
@@ -25,7 +27,24 @@
             ele.style.backgroundColor = 'yellow'
             ele.style.width = 'fit-content' 
         }
-         
+        var counter = 0;
+        var size1 = [25,50,75,100];
+        function change2(){
+        var el = document.getElementById('h_1');
+        el.style.fontSize = size1[counter++]+'px'
+        if(counter == size1.length)
+        {
+            counter = 0;
+        }
+        }
+        function change3(){
+        var el = document.getElementById('h_1');
+        el.style.fontSize = size1[counter--]+'px'
+        if(counter == size1.length)
+        {
+            counter = 0;
+        }
+        }
     </script>
 
 </body>
