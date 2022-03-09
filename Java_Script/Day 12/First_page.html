@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Page</title>
+    <style>
+        body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #5a819e;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    place-items: center;
+    overflow: hidden;
+    font-family: poppins;
+    }
+    .container {
+    position: relative;
+    width: 500px;
+    height:700px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #1b3550;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px rgb(197, 194, 194);
+    }
+    .brand-logo {
+    height: 200px;
+    width: 200px;
+    background: url("https://media-exp1.licdn.com/dms/image/C510BAQHzgveVISKHew/company-logo_200_200/0/1535961179738?e=2147483647&v=beta&t=w_tKvf32poU2Pp1fcJZWyWHGRhL2UA-jtt4fK0l2ArM");
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px rgb(173, 169, 169);
+}
+    .brand-title {
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #1DA1F2;
+    letter-spacing: 1px;
+    }
+    .inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+label {
+  margin-bottom: 4px;
+  text-align:center;
+  color:rgb(255, 255, 255);
+  font-weight: bolder;
+  font-size: large;
+  
+}
+label:nth-of-type(2) {
+  margin-top: 10px;
+}
+input::placeholder {
+  color: gray;
+}
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgb(199, 196, 196);
+}
+button:hover {
+  box-shadow: none;
+}
+a {
+  position: absolute;
+  font-size: 20px;
+  bottom:50px;
+  right: 50px;
+  text-decoration: none;
+  color: black;
+  background: rgb(189, 189, 62);
+  border-radius: 10px;
+  padding: 2px;
+}
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+    </style>
+</head>
+<body>
+    <center>
+    <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title"><h2>Employment form</h2></div>
+        <div class="inputs">
+            <label for="name">
+                Name <input type="text" name="n1" id="i1" placeholder="Enter Name">
+            </label><br />
+            <label for="age">
+                Age <input type="number" name="a1" id="i2" placeholder="Enter Age">
+            </label><br />
+        <input type="button" value="store" onclick="storeUser()"><br />
+        </div>
+        <a href="Second_page.html">Next Page</a>
+      </div>
+  
+    
+    <script type = "text/javascript">
+        function storeUser(){
+           var n2 = document.getElementById('i1').value;
+           if(n2.length < 1){
+               alert('please enter some input');
+           } else{
+               sessionStorage.setItem('user',n2);
+           }
+           var n3 = document.getElementById('i2').value;
+           if(n3.length < 1){
+               alert('please enter some input');
+           } else{
+               sessionStorage.setItem('Age',n3);
+           }
+        }
+    </script>
+    </center>
+</body>
+</html>

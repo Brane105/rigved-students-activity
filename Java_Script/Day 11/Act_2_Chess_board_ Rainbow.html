@@ -16,9 +16,11 @@
             margin-top: 2em;
             
         }
+        
     </style>
 </head>
 <body onload="board()">
+    <!--Chessboard using canvas and for loops-->
     <h1> Chess Board</h1>
         <canvas id="Chessboard" width="800px" height="500px"></canvas>
         <script type="text/javascript">
@@ -43,6 +45,8 @@
             context.strokeRect(x, y, squareSize*8, squareSize*8)
             }
         </script>
+
+<!--rainbow using the canvas-->
 <h1> Rainbow</h1>
 <canvas id="myCanvas" width="400" height="400">
 </canvas>
@@ -74,7 +78,31 @@ var colors = ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange','red'];
         };
 
         colors.reverse().forEach( drawArc );
-   
+</script>
+<table>
+    <h2 id="h_2">Click on the below box to change background color</h2>
+    <td id="purple"></td>
+    <td id="green"></td>
+    <td id="blue"></td>
+</table>
+<script type="text/javascript">
+/*this below Program changes the Background */
+document.getElementById('purple').onclick = partyPurple
+document.getElementById('green').onclick = partyGreen
+document.getElementById('blue').onclick = partyBlue
+
+function partyPurple()  {
+    document.querySelector('.div1').style.backgroundColor = 'rgba(241,63,247,1)'
+    document.querySelector('.div1').style.color ='black'
+}
+function partyGreen()   {
+    document.querySelector('.div2').style.backgroundColor = 'rgba(0,253,81,1)'
+    document.querySelector('.div2').style.color ='black'
+}
+function partyBlue()  {
+    document.querySelector('.div3').style.backgroundColor = 'rgba(0,254,255)'
+    document.querySelector('.div3').style.color ='black'
+}
 </script>
 </body>
 </html>
