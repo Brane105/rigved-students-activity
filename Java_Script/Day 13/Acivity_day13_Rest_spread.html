@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest</title>
+    <style>
+         body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #5a819e;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        place-items: center;
+        overflow: hidden;
+        font-family: poppins;
+        }
+        .container {
+        position: relative;
+        width: 400px;
+        height:500px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #1b3550;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px rgb(197, 194, 194);
+    }
+        .h_1 {
+        margin-top: 10px;
+        margin-left: 40px;
+        font-weight: 900;
+        font-size: 2em;
+        color: #f3f3f3;
+        letter-spacing: 1px;
+        position: relative;
+        width: 250px;
+        height:150px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #479c61;
+        box-shadow: 14px 14px 20px #1c3047, -14px -14px 20px rgb(36, 35, 54);
+        text-shadow: 14px 14px 20px #44505f, -14px -14px 20px rgb(54, 53, 78);
+       
+    }
+    .div_1{
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    text-align:center;
+    color:rgb(255, 255, 255);
+    font-weight: bolder;
+    font-size: large;
+    margin-left: 15px;
+    width: 300px;
+    height:250px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #479c61;
+    box-shadow: 14px 14px 20px #1c3047, -14px -14px 20px rgb(36, 35, 54);
+    }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+    <h1 class="h_1">Rest and Spread</h1>
+    <div class="div_1">
+    <script type="text/javascript">
+        function test(a, ...b) {
+            document.write("a = "+a+"<br/>");
+            document.write('<br />')
+            document.write("b = "+b+"<br/>");
+            document.write('<br />')
+            let x = parseInt(Math.max(a, ...b));
+            let y = parseInt(Math.min(a, ...b));
+            
+            document.write("Min Value : "+y+"<br />"+"<br />"+" Max value : "+x );
+            document.write('<br />')
+            document.write('<br />')
+            var sum = 0;
+            for (var i in arguments) {
+                sum += arguments[i];
+            }
+            document.write('Total :' + sum + '<br>');
+            }
+        test(10, 20, 90, 35, 75);
+
+            let x = Math.max(c);
+            let y = Math.min(c);
+    </script>
+    </div>
+    </div>
+</body>
+</html>
