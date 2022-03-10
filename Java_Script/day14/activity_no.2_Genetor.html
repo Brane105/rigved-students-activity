@@ -4,21 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Padding</title>
+    <style>
+        body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #5a819e;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        place-items: center;
+        overflow: hidden;
+        font-family: poppins;
+        }
+        .container {
+        position: relative;
+        width: 400px;
+        height:500px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #1b3550;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px rgb(197, 194, 194);
+    }
+    h1 {
+        margin-top: 10px;
+        margin-left: 20px;
+        font-weight: 900;
+        font-size: 2em;
+        color: #f3f3f3;
+        letter-spacing: 1px;
+        position: relative;
+        width: 250px;
+        height:200px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #479c61;
+        box-shadow: 14px 14px 20px #1c3047, -14px -14px 20px rgb(36, 35, 54);
+        text-shadow: 14px 14px 20px #44505f, -14px -14px 20px rgb(54, 53, 78);
+       
+    }
+    .c1{
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    text-align:center;
+    color:rgb(255, 255, 255);
+    font-weight: bolder;
+    font-size: large;
+    margin-left: 15px;
+    width: 300px;
+    height:200px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #479c61;
+    box-shadow: 14px 14px 20px #1c3047, -14px -14px 20px rgb(36, 35, 54);
+       
+    }
+    </style>
 </head>
 <body>
     <center>
+    <div class="container">
     <h1>random Number generator</h1>
+    <div class="c1">
     <p id="i1"></p>
-    <p id="i2"></p>
-
+    
     <script>
     let x = Math.floor((Math.random() * 10000) + 1);
     document.getElementById("i1").innerHTML = x;
     let x1 = String(x)
     let r1 = x1.padStart(6,"0") 
-    document.write(`<p>Padded : ${r1}</p>`);
+    document.write(`<p>Padded Number : ${r1}</p>`);
     </script>
+    </div>
+    </div>
 </center>
 </body>
 </html>
