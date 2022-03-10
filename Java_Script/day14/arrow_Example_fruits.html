@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <h2>Arrow function as a replacement to anonymous function</h2>
+    <script type = "text/javascript">
+        var items = ['Apple','Mango', 'Peer', 'Avacado','Orange'];
+        //anonymous function
+        items.forEach(function(item, i) {
+            document.write(`<p>${item} at position ${i}</p>`);
+        });
+        document.write("<hr />");
+        //arrow function
+        items.forEach((item, i) => document.write(`<p>${item} at position ${i}</p>`));
+        //arrow funtion in map
+        var items2 = items.map((item, i) => item + "is a Fruit");
+        document.write("<hr/>")
+        items2.forEach((item, i) => document.write(`<p>${item} at position ${i}</p>`))
+    </script>
+    </center>
+</body>
+</html>
