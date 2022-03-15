@@ -1,0 +1,152 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employeedb         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| rigveddb           |
+| sys                |
++--------------------+
+6 rows in set (0.12 sec)
+
+mysql> use employeedb;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table employee(id int primary key, name varchar(25) not null, age int, check (age<60 and age>18),email varchar(25) unique );
+Query OK, 0 rows affected (1.33 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_employeedb |
++----------------------+
+| employee             |
++----------------------+
+1 row in set (0.10 sec)
+
+mysql> desc employee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(25) | NO   |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
+| email | varchar(25) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> insert into employee values(666,'Lucifer',49,'Luci66@gmail.com');
+Query OK, 1 row affected (0.17 sec)
+
+mysql>  insert into employee values(667,'Asmodeous',29,'ASmo67@gmail.com');
+Query OK, 1 row affected (0.19 sec)
+
+mysql>  insert into employee values(668,'Bilial',109,'Bilial68@gmail.com');
+ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
+mysql>  insert into employee values(668,'Bilial',109,'Asmo67@gmail.com');
+ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
+mysql> insert into employee values(668,'Bilial',19,'Asmo67@gmail.com');
+ERROR 1062 (23000): Duplicate entry 'Asmo67@gmail.com' for key 'employee.email'
+mysql> insert into employee values(668,'Bilial',19,'Bilial68@gmail.com');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> select * from employee;
++-----+-----------+------+--------------------+
+| id  | name      | age  | email              |
++-----+-----------+------+--------------------+
+| 666 | Lucifer   |   49 | Luci66@gmail.com   |
+| 667 | Asmodeous |   29 | ASmo67@gmail.com   |
+| 668 | Bilial    |   19 | Bilial68@gmail.com |
++-----+-----------+------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into employee values(669,'Belphegor',35,'Bel7@gmail.com');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> alter table employee add column pan varchar(10), add column aadhar bigint;
+Query OK, 0 rows affected (1.89 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | NO   | PRI | NULL    |       |
+| name   | varchar(25) | NO   |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| email  | varchar(25) | YES  | UNI | NULL    |       |
+| pan    | varchar(10) | YES  |     | NULL    |       |
+| aadhar | bigint      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.14 sec)
+
+mysql> alter table employee add constraint uq_pan unique key (pan),add constraint uq_aadhar unique key (aadhar);
+Query OK, 0 rows affected (0.76 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | NO   | PRI | NULL    |       |
+| name   | varchar(25) | NO   |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| email  | varchar(25) | YES  | UNI | NULL    |       |
+| pan    | varchar(10) | YES  | UNI | NULL    |       |
+| aadhar | bigint      | YES  | UNI | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+-----------+------+--------------------+------+--------+
+| id  | name      | age  | email              | pan  | aadhar |
++-----+-----------+------+--------------------+------+--------+
+| 666 | Lucifer   |   49 | Luci66@gmail.com   | NULL |   NULL |
+| 667 | Asmodeous |   29 | ASmo67@gmail.com   | NULL |   NULL |
+| 668 | Bilial    |   19 | Bilial68@gmail.com | NULL |   NULL |
+| 669 | Belphegor |   35 | Bel7@gmail.com     | NULL |   NULL |
++-----+-----------+------+--------------------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee values(670,'Abadon',30,'Abadon70@gmail.com','ABadon75',44456454546);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert into employee values(671,'Satan',35,'Satan70@gmail.com','Satan75',44456454546);
+ERROR 1062 (23000): Duplicate entry '44456454546' for key 'employee.uq_aadhar'
+mysql> insert into employee values(671,'Satan',35,'Satan70@gmail.com','Satan575',444564545446);
+Query OK, 1 row affected (0.27 sec)
+
+mysql> select * from employee;
++-----+-----------+------+--------------------+----------+--------------+
+| id  | name      | age  | email              | pan      | aadhar       |
++-----+-----------+------+--------------------+----------+--------------+
+| 666 | Lucifer   |   49 | Luci66@gmail.com   | NULL     |         NULL |
+| 667 | Asmodeous |   29 | ASmo67@gmail.com   | NULL     |         NULL |
+| 668 | Bilial    |   19 | Bilial68@gmail.com | NULL     |         NULL |
+| 669 | Belphegor |   35 | Bel7@gmail.com     | NULL     |         NULL |
+| 670 | Abadon    |   30 | Abadon70@gmail.com | ABadon75 |  44456454546 |
+| 671 | Satan     |   35 | Satan70@gmail.com  | Satan575 | 444564545446 |
++-----+-----------+------+--------------------+----------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table employee drop column pan, drop column aadhar;
+Query OK, 0 rows affected (2.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-----+-----------+------+--------------------+
+| id  | name      | age  | email              |
++-----+-----------+------+--------------------+
+| 666 | Lucifer   |   49 | Luci66@gmail.com   |
+| 667 | Asmodeous |   29 | ASmo67@gmail.com   |
+| 668 | Bilial    |   19 | Bilial68@gmail.com |
+| 669 | Belphegor |   35 | Bel7@gmail.com     |
+| 670 | Abadon    |   30 | Abadon70@gmail.com |
+| 671 | Satan     |   35 | Satan70@gmail.com  |
++-----+-----------+------+--------------------+
+6 rows in set (0.00 sec)
+
+mysql>
