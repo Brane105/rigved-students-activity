@@ -1,0 +1,92 @@
+mysql> INSERT INTO t1 VALUES(1,Raj,20);
+ERROR 1054 (42S22): Unknown column 'Raj' in 'field list'
+mysql> INSERT INTO t1 VALUES(1,'Raj',20);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> INSERT INTO t1 VALUES(2,'Ramesh',20);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> INSERT INTO t1 VALUES(3,'Ravi',21);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> INSERT INTO t1 VALUES(4,'Suraj',22);
+Query OK, 1 row affected (0.46 sec)
+
+mysql> select * from t1
+    -> ;
++--------+--------+------+
+| rollno | Name   | Age  |
++--------+--------+------+
+|      1 | Raj    |   20 |
+|      2 | Ramesh |   20 |
+|      3 | Ravi   |   21 |
+|      4 | Suraj  |   22 |
++--------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> desc t1;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(10) | YES  |     | NULL    |       |
+| Age    | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.18 sec)
+
+mysql> desc t2;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| mid           | int  | YES  |     | NULL    |       |
+| Physics       | int  | YES  |     | NULL    |       |
+| Maths         | int  | YES  |     | NULL    |       |
+| Chemistry     | int  | YES  |     | NULL    |       |
+| studentrollno | int  | YES  | MUL | NULL    |       |
++---------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into t2 values(11,70,80,70,2);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> select * from t2;
++------+---------+-------+-----------+---------------+
+| mid  | Physics | Maths | Chemistry | studentrollno |
++------+---------+-------+-----------+---------------+
+|   11 |      70 |    80 |        70 |             2 |
++------+---------+-------+-----------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into t2 values(22,80,80,,80,1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',80,1)' at line 1
+mysql> insert into t2 values(22,80,80,80,1);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into t2 values(33,90,90,70,3);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into t2 values(44,88,88,77,4);
+Query OK, 1 row affected (0.51 sec)
+
+mysql> select * from t2;
++------+---------+-------+-----------+---------------+
+| mid  | Physics | Maths | Chemistry | studentrollno |
++------+---------+-------+-----------+---------------+
+|   11 |      70 |    80 |        70 |             2 |
+|   22 |      80 |    80 |        80 |             1 |
+|   33 |      90 |    90 |        70 |             3 |
+|   44 |      88 |    88 |        77 |             4 |
++------+---------+-------+-----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select t1.rollno RollNo, t1.Name Name, t2.Physics, t2.Maths, t2.Chemistry,(Physics+Maths+Chemistry) Results, round((Physics+Maths+Chemistry)/3,2) Average from t1 inner join t2 on t1.rollno = t2.studentrollno;
++--------+--------+---------+-------+-----------+---------+---------+
+| RollNo | Name   | Physics | Maths | Chemistry | Results | Average |
++--------+--------+---------+-------+-----------+---------+---------+
+|      1 | Raj    |      80 |    80 |        80 |     240 |   80.00 |
+|      2 | Ramesh |      70 |    80 |        70 |     220 |   73.33 |
+|      3 | Ravi   |      90 |    90 |        70 |     250 |   83.33 |
+|      4 | Suraj  |      88 |    88 |        77 |     253 |   84.33 |
++--------+--------+---------+-------+-----------+---------+---------+
+4 rows in set (0.00 sec)
+Above is the output 
