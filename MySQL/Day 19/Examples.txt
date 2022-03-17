@@ -1,0 +1,186 @@
+mysql> create table emp (id int primary key auto_increment, Name varchar(20), Dob date,salary double)$$
+Query OK, 0 rows affected (1.44 sec)
+mysql> select * from emp $$
++----+--------+------------+--------+
+| id | Name   | Dob        | salary |
++----+--------+------------+--------+
+|  1 | Alex   | 1996-04-21 |  35200 |
+|  2 | Bilial | 1998-03-23 |  30200 |
+|  3 | Chris  | 1998-03-20 |  36600 |
++----+--------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create procedure p2()
+    -> select * from emp $$
+Query OK, 0 rows affected (0.46 sec)
+
+mysql> call p2() $$
++----+--------+------------+--------+
+| id | Name   | Dob        | salary |
++----+--------+------------+--------+
+|  1 | Alex   | 1996-04-21 |  35200 |
+|  2 | Bilial | 1998-03-23 |  30200 |
+|  3 | Chris  | 1998-03-20 |  36600 |
++----+--------+------------+--------+
+3 rows in set (0.12 sec)
+
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> create procedure p3()
+    -> begin
+    -> declare a int;
+    -> declare b int;
+    -> declare c int;
+    -> set a = 5;
+    -> set b = a + 2;
+    -> set c = a + b;
+    -> select a, b, c;
+    -> end $$
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> p3()$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p3()' at line 1
+mysql> call p3() $$
++------+------+------+
+| a    | b    | c    |
++------+------+------+
+|    5 |    7 |   12 |
++------+------+------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call p3() $$
++------+------+------+
+| a    | b    | c    |
++------+------+------+
+|    5 |    7 |   12 |
++------+------+------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select a, b, c$$
+ERROR 1054 (42S22): Unknown column 'a' in 'field list'
+mysql> call p3() $$
++------+------+------+
+| a    | b    | c    |
++------+------+------+
+|    5 |    7 |   12 |
++------+------+------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select a, b, c$$
+ERROR 1054 (42S22): Unknown column 'a' in 'field list'
+mysql> set @x = 10$$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select @x $$
++------+
+| @x   |
++------+
+|   10 |
++------+
+1 row in set (0.00 sec)
+
+mysql> create procedure p4()
+    -> begin
+    -> declare a int;
+    -> set a = 5;
+    -> set b = @x + a;
+    -> select a, b, @x;
+    -> end;
+    -> $$
+ERROR 1193 (HY000): Unknown system variable 'b'
+mysql> create procedure p4()
+    -> begin
+    -> declare a, b int;
+    -> set a = 5;
+    -> set b = @x + a;
+    -> select a, b, @x;
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> call p4()$$
++------+------+------+
+| a    | b    | @x   |
++------+------+------+
+|    5 |   15 |   10 |
++------+------+------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create procedure p5(IN a varchar)
+    -> begin
+    -> select a;
+    -> end $$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+begin
+select a;
+end' at line 1
+mysql> create procedure p5(IN a varchar(15))
+    -> begin
+    -> select a;
+    -> end $$
+Query OK, 0 rows affected (0.37 sec)
+
+mysql> p5('hello')$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p5('hello')' at line 1
+mysql> call p5('hello')$$
++-------+
+| a     |
++-------+
+| hello |
++-------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create procedure p6(IN a int, IN b int)
+    -> begin
+    -> declare c int;
+    -> set c = a + b;
+    -> end $$
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> call p6(10, 20)$$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create procedure p6(IN a int, IN b int)
+    -> begin
+    -> declare c int;
+    -> set c = a + b;
+    -> select c;
+    -> end $$
+ERROR 1304 (42000): PROCEDURE p6 already exists
+mysql> create procedure p7(IN a int, IN b int)
+    -> begin
+    -> declare c int;
+    -> set c = a + b;
+    -> select c;
+    -> end $$
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> call p7(10, 20)$$
++------+
+| c    |
++------+
+|   30 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call p7(30, 20)$$
++------+
+| c    |
++------+
+|   50 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
