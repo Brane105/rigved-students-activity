@@ -1,0 +1,103 @@
+mysql> create table user (UserId int primary key auto_increment, Name varchar(10), Password varchar(20));
+    -> $$
+Query OK, 0 rows affected (1.77 sec)
+
+mysql> create table user_history(UserId int,Name varchar(10), old_password varchar(20),Time time);
+    -> $$
+Query OK, 0 rows affected (0.69 sec)
+
+mysql> desc user;
+    -> $$
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| UserId   | int         | NO   | PRI | NULL    | auto_increment |
+| Name     | varchar(10) | YES  |     | NULL    |                |
+| Password | varchar(20) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.20 sec)
+
+mysql> desc user_history;
+    -> $$
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| UserId       | int         | YES  |     | NULL    |       |
+| Name         | varchar(10) | YES  |     | NULL    |       |
+| old_password | varchar(20) | YES  |     | NULL    |       |
+| Time         | time        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into user(Name, Password) values('Asmodeous','fdfdfd2342'),('Lilith','sasad12332'),('Bilial','asdasd13132');
+    -> $$
+Query OK, 3 rows affected (0.16 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from user;
+    -> $$
++--------+-----------+-------------+
+| UserId | Name      | Password    |
++--------+-----------+-------------+
+|      1 | Asmodeous | fdfdfd2342  |
+|      2 | Lilith    | sasad12332  |
+|      3 | Bilial    | asdasd13132 |
++--------+-----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> create trigger update_user_history
+    -> before update on user for each row
+    -> begin
+    -> insert into user_history(Name,old_password,Time) values(old.Name, old.Password, current_time());
+    -> end
+    -> $$
+Query OK, 0 rows affected (0.72 sec)
+
+mysql> select * from user_history $$
+Empty set (0.12 sec)
+
+mysql> update user set Password = 'jkjkjkj123' where UserId = 2 $$
+Query OK, 1 row affected (0.47 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> create procedure hist()
+    ->  select * from user_history $$
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> call hist()
+    -> $$
++--------+--------+--------------+----------+
+| UserId | Name   | old_password | Time     |
++--------+--------+--------------+----------+
+|   NULL | Lilith | sasad12332   | 18:07:55 |
++--------+--------+--------------+----------+
+1 row in set (0.13 sec)
+
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create procedure hist()
+    ->  select * from user_history $$
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> call hist()
+    -> $$
++--------+--------+--------------+----------+
+| UserId | Name   | old_password | Time     |
++--------+--------+--------------+----------+
+|   NULL | Lilith | sasad12332   | 18:07:55 |
++--------+--------+--------------+----------+
+1 row in set (0.13 sec)
+
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select * from user $$
++--------+-----------+-------------+
+| UserId | Name      | Password    |
++--------+-----------+-------------+
+|      1 | Asmodeous | fdfdfd2342  |
+|      2 | Lilith    | jkjkjkj123  |
+|      3 | Bilial    | asdasd13132 |
++--------+-----------+-------------+
+3 rows in set (0.11 sec)
+
+mysql>
