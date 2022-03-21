@@ -83,11 +83,20 @@ WriteResult({ "nInserted" : 1 })
 { "_id" : 11, "name" : "B", "password" : "asdfdf123" }
 _______________________________________________________________________
 Step : 11
--Updating the password 
+-Updating the password //warning replacing 
 > db.employee.update({"_id":10},{"password":"update1231"});
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > db.employee.find();
 { "_id" : 10, "password" : "update1231" }
 { "_id" : 11, "name" : "B", "password" : "asdfdf123" }
+______________________________________________________________________
+step : 12
+-updating the password using ID 
+> db.employee.update({"_id": 10}, {$set: {name: "A",password:"Judl234"}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employee.find();
+{ "_id" : 10, "name" : "A", "password" : "Judl234" }
+{ "_id" : 11, "name" : "B", "password" : "asdfdf123" }
+_____________________________________________________________________________
 
 
