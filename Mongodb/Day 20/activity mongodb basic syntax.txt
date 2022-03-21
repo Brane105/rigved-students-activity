@@ -1,0 +1,93 @@
+> show databases;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use mydb;
+switched to db mydb
+_______________________________________________________________________
+step : 1 
+-creating 2 Collections employee and EMPLOYEE
+> db.createCollection("employee");
+{ "ok" : 1 }
+> db.createCollection("EMPLOYEE");
+{ "ok" : 1 }
+_______________________________________________________________________
+Step : 2
+-Showing collections
+> show collections;
+EMPLOYEE
+employee
+_______________________________________________________________________
+Step : 3
+-inserting new docs 
+> db.employee.insert({_id : 10,name :"Alex",password :"asd2312"});
+WriteResult({ "nInserted" : 1 })
+> db.employee.find();
+{ "_id" : 10, "name" : "Alex", "password" : "asd2312" }
+> db.employee.insert({_id : 11,name : "Bruce",password : "Asd1324"});
+WriteResult({ "nInserted" : 1 })
+________________________________________________________________________
+step : 4
+-inserting many entries 
+> db.employee.insertMany([
+... {_id:12,name:"Chris",password:"ASdd123"},
+... {_id:13,name:"Deep",password:"hhfh323"}]);
+{ "acknowledged" : true, "insertedIds" : [ 12, 13 ] }
+________________________________________________________________________
+Step : 5
+-show casing the docs using FIND()
+> db.employee.find();
+{ "_id" : 10, "name" : "Alex", "password" : "asd2312" }
+{ "_id" : 11, "name" : "Bruce", "password" : "Asd1324" }
+{ "_id" : 12, "name" : "Chris", "password" : "ASdd123" }
+{ "_id" : 13, "name" : "Deep", "password" : "hhfh323" }
+________________________________________________________________________
+Step : 6
+-finding the doc using ID 
+> db.employee.find({_id:13});
+{ "_id" : 13, "name" : "Deep", "password" : "hhfh323" }
+________________________________________________________________________
+step : 7
+- Deleting the particular doc using ID 
+> db.employee.find({_id:13});
+{ "_id" : 13, "name" : "Deep", "password" : "hhfh323" }
+> db.employee.find();
+{ "_id" : 10, "name" : "Alex", "password" : "asd2312" }
+{ "_id" : 11, "name" : "Bruce", "password" : "Asd1324" }
+{ "_id" : 12, "name" : "Chris", "password" : "ASdd123" }
+{ "_id" : 13, "name" : "Deep", "password" : "hhfh323" }
+________________________________________________________________________
+step : 8
+- Deleting the particular doc using ID 
+> db.employee.remove({_id:13});
+WriteResult({ "nRemoved" : 1 })
+> db.employee.find();
+{ "_id" : 10, "name" : "Alex", "password" : "asd2312" }
+{ "_id" : 11, "name" : "Bruce", "password" : "Asd1324" }
+{ "_id" : 12, "name" : "Chris", "password" : "ASdd123" }
+_________________________________________________________________________
+step : 9
+-Removing all the users 
+> db.employee.remove({});
+WriteResult({ "nRemoved" : 3 })
+> db.employee.find();
+________________________________________________________________________
+Step : 10
+-storing all docs 
+> db.employee.find();
+{ "_id" : 10, "name" : "A", "password" : "asd2312" }
+> db.employee.insert({ "_id" : 11, "name" : "B",password: "asdfdf123"});
+WriteResult({ "nInserted" : 1 })
+> db.employee.find();
+{ "_id" : 10, "name" : "A", "password" : "asd2312" }
+{ "_id" : 11, "name" : "B", "password" : "asdfdf123" }
+_______________________________________________________________________
+Step : 11
+-Updating the password 
+> db.employee.update({"_id":10},{"password":"update1231"});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employee.find();
+{ "_id" : 10, "password" : "update1231" }
+{ "_id" : 11, "name" : "B", "password" : "asdfdf123" }
+
+
