@@ -1,0 +1,40 @@
+mysql> select * from person;
++------+------+--------+
+| ID   | NAME | GENDER |
++------+------+--------+
+|   10 | Raj  | M      |
+|   11 | Alia | F      |
++------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> delimiter $$
+mysql> create procedure p1(IN mid int)
+    -> begin
+    -> declare n varchar(25);
+    -> declare gen varchar(25);
+    -> select NAME into n from person where id = mid;
+    -> select GENDER into gen from person where id = mid;
+    -> if gen = 'M'
+    -> then select concat("Mr.",n) from person where id = mid;
+    -> else select concat("Ms.",n) from person where id = mid;
+    -> end if;
+    -> end$$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call p1(10)$$
++----------------------+
+| concat("Mr.",n)      |
++----------------------+
+| Mr.Raj               |
++----------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call p1(11)$$
++------------------------+
+| concat("Miss.",n) |
++------------------------+
+| Miss.Alia              |
++------------------------+
+1 row in set (0.00 sec)
