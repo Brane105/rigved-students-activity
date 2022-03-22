@@ -1,0 +1,125 @@
+// Query Operators 
+_____________________________________________________________________
+
+1. Query Operators : $or : //any one value must be true 
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+--------------------------output--------------------------------------
+> db.user.find({$or:[{"name":"Lucifer"},{"salary":35000}]});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+______________________________________________________________________
+
+2. Query op : $and : // all values must be true
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+----------------------------output-----------------------------------
+> db.user.find({$and:[{name:"Lilith"},{age:38}]});
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650
+______________________________________________________________________
+
+3.Query op : $in : // value in collection 
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+----------------------output--------------------------------------
+> db.user.find({age:{$in:[35,38]}});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+-----------------------output---------------------------------------
+> db.user.find({age:{$in:[35]}});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+----------------------output---------------------------------------
+> db.user.find({age:{$in:[38]}});
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+>
+____________________________________________________________________
+
+4.Query op : $ne // not equal to
+> db.user.find({name:{$ne:"Belphegor"}});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+>
+_________________________________________________________________
+
+5. Query op : $gt and $gte // greater and greater and equal to
+> db.user.find({age:{$gte:35}});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+----------------------output greater and equal to ----------------
+> db.user.find({age:{$gt:35}});
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+
+__________________________________________________________________
+
+6. Query op : $lte // less than equal too
+----------output-------------------------------------------------
+> db.user.find({age:{$lte:35}});
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+>
+___________________________________________________________________
+
+7. Query op : $nor //returns all the documents that fail to match.
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+---------------output-------------------------------------------
+> db.user.find({$nor:[{_id:44},{salary:35000}]});
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+_________________________________________________________________
+
+8. Query op : $exist // gives all the values that exist if TRUE 
+-----------------output-----------------------------------------
+> db.user.find({name: {$exists: true}})
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+{ "_id" : 66, "name" : "Abadon", "age" : 35, "salary" : 35650 }
+{ "_id" : 77, "name" : "Belphegor", "age" : 38, "salary" : 35000 }
+{ "_id" : 88, "name" : "Satan", "age" : 35, "salary" : 40000 }
+{ "_id" : 99, "name" : "Lilith", "age" : 38, "salary" : 35650 }
+>
+_________________________________________________________________

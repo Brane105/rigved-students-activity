@@ -1,0 +1,125 @@
+1.Create new user collection and insert some values 
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer" }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+________________________________________________________
+
+2.insert many values 
+> db.user.insertMany([
+... {firstname:"Lilith",lastnmae:"Demon"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6239956bf24be34af02da537")
+        ]
+}
+________________________________________________________
+
+3.Using pretty() function
+> db.user.find().pretty();
+{ "_id" : 33, "name" : "Lucifer" }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+{
+        "_id" : ObjectId("6239956bf24be34af02da537"),
+        "firstname" : "Lilith",
+        "lastnmae" : "Demon"
+}
+________________________________________________________
+
+4.Using find FILTER() func
+> db.user.find({_id:33});
+{ "_id" : 33, "name" : "Lucifer" }
+______________________________________________________
+
+5.Using find({},{name:1} hide some properties 
+> db.user.find({},{name:1});
+{ "_id" : 33, "name" : "Lucifer" }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+{ "_id" : ObjectId("6239956bf24be34af02da537") }
+_______________________________________________________
+
+6. Hiding the ID using 0 
+> db.user.find({},{name:1,_id:0});
+{ "name" : "Lucifer" }
+{ "name" : "Asmodeous" }
+{ "name" : "Bilial" }
+{  }
+// here i not using first name and last name so you wont see their output 
+
+_________________________________________________________________________
+
+7.Gettting all the elements from hd
+> db.user.find({},{_id:0});
+{ "name" : "Lucifer" }
+{ "name" : "Asmodeous" }
+{ "name" : "Bilial" }
+{ "firstname" : "Lilith", "lastnmae" : "Demon" }
+__________________________________________________________________________
+
+8. //javascript
+
+> var x = 10;
+> var y = 23;
+> var z = x+y;
+> z;
+33
+> function welcome(){
+... return 'Hello World !';
+... }
+> welcome();
+Hello World !
+>
+___________________________________________________________________________
+
+9.DeleteOne()
+
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer" }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+{ "_id" : ObjectId("6239956bf24be34af02da537"), "firstname" : "Lilith", "lastnmae" : "Demon" }
+----------------------------------------------------------------------------------------------
+> db.user.deleteOne({firstname:"Lilith"});
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer" }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+_____________________________________________________________________________________________
+
+10. Updating 
+> db.user.update({"_id": 33}, {$set: {age:35,salary:35000}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous" }
+{ "_id" : 55, "name" : "Bilial" }
+>
+------------------------------------------------------------------------------------------
+> db.user.update({"_id": 44}, {$set: {age:35,salary:35650}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.update({"_id": 55}, {$set: {age:38,salary:35000}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.find();
+{ "_id" : 33, "name" : "Lucifer", "age" : 35, "salary" : 35000 }
+{ "_id" : 44, "name" : "Asmodeous", "age" : 35, "salary" : 35650 }
+{ "_id" : 55, "name" : "Bilial", "age" : 38, "salary" : 35000 }
+>
+__________________________________________________________________________________________
+
+11. Nested arrays 
+> db.EMPLOYEE.insertOne({_id:2,firstname:"Virat",lastname:"Kholi",hobbies:["Cricket","Chess"],address:{"state":"MH","city":"MBI"}});
+{ "acknowledged" : true, "insertedId" : 2 }
+> db.EMPLOYEE.find();
+{ "_id" : 1, "firstname" : "Sachin", "lastname" : "Tendular", "hobbies" : [ "Cricket", "Football" ] }
+{ "_id" : 2, "firstname" : "Virat", "lastname" : "Kholi", "hobbies" : [ "Cricket", "Chess" ], "address" : { "state" : "MH", "city" : "MBI" } }
+>
+__________________________________________________________________________________________________________________________________________
+
+
+
+
+
