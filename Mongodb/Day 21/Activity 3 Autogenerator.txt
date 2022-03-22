@@ -1,6 +1,6 @@
-A.a.Autogenerate values to _id for a user like 1, 2, 3, 4 and so, so that you don’t manually pass the _id, 
+//Activity 1 :Autogenerate values to _id for a user like 1, 2, 3, 4 and so, so that you don’t manually pass the _id, 
 the autogenerating function should generate the next sequence of number even if you terminate the database 
-and restart it, i.e., don’t just create a temporary variable and increment it
+and restart it, i.e., don’t just create a temporary variable and increment it//
 _______________________________________________________________
 > show collections;
 EMPLOYEE
@@ -122,9 +122,9 @@ WriteResult({ "nInserted" : 1 })
 { "_id" : 5, "name" : "Belphego", "pos" : "Bowling" }
 >
 ____________________________________________________________________________________________________________
-//B. Generate values to _id for a student like a university number, ex: if the university is ABC, 
+//Activity 2 :Generate values to _id for a student like a university number, ex: if the university is ABC, 
 then the numbers must be ABC1, ABC2, ABC3 and so on, this must also be auto-generate through the 
-javascript function, it must generate the next sequence even if you terminating the database and restart it
+javascript function, it must generate the next sequence even if you terminating the database and restart it//
 ------------------------------------------------------------------------------------------------------------
 > db.createCollection("studentUni");
 { "ok" : 1 }
