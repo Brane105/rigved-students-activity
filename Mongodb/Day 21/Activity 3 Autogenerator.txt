@@ -1,0 +1,41 @@
+1.Step 1 create collection 
+--------------------------------------------------------------------
+> db.createCollection("student")
+{ "ok" : 1 }
+___________________________________________________________________
+
+2.Step 2 insert doc in collection 
+-------------------------------------------------------------------
+> db.student.find();
+> db.student.insert({ "_id" : "item_id", "sequence_value": 0 });
+WriteResult({ "nInserted" : 1 })
+__________________________________________________________________
+
+3. step 2 create a function 
+------------------------------------------------------------------
+> function getValueForNextSequence(sequenceOfName){
+...  var sequenceDoc = db.student.findAndModify({
+... query:{_id: sequenceOfName },
+... update: {$inc:{sequence_value:1}},
+... new:true
+... });
+... return "ABC"+sequenceDoc.sequence_value;
+... }
+__________________________________________________________________
+
+4. insert the values 
+----------------------------------------------------------------
+> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Alex", "class":"BE"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Bruce", "class":"SE"});
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Chris", "class":"FE"});
+WriteResult({ "nInserted" : 1 })
+-----------------------------output---------------------------
+> db.student.find();
+{ "_id" : "student_id", "sequence_value" : 3 }
+{ "_id" : "ABC1", "name" : "Alex", "class" : "BE" }
+{ "_id" : "ABC2", "name" : "Bruce", "class" : "SE" }
+{ "_id" : "ABC3", "name" : "Chris", "class" : "FE" }
+>
+_________________________________________________________________
