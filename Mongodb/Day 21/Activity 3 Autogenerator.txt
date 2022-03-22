@@ -1,41 +1,163 @@
-1.Step 1 create collection 
---------------------------------------------------------------------
-> db.createCollection("student")
+A.a.Autogenerate values to _id for a user like 1, 2, 3, 4 and so, so that you don’t manually pass the _id, 
+the autogenerating function should generate the next sequence of number even if you terminate the database 
+and restart it, i.e., don’t just create a temporary variable and increment it
+_______________________________________________________________
+> show collections;
+EMPLOYEE
+employee
+myCollection
+student
+user
+_______________________________________________________________
+> db.createCollection('sequence');
 { "ok" : 1 }
-___________________________________________________________________
-
-2.Step 2 insert doc in collection 
--------------------------------------------------------------------
-> db.student.find();
-> db.student.insert({ "_id" : "item_id", "sequence_value": 0 });
+> db.sequence.insert ( {_id: "item_id" , sequence_value : 0 });
 WriteResult({ "nInserted" : 1 })
-__________________________________________________________________
+> db.sequence.find();
+{ "_id" : "item_id", "sequence_value" : 0 }
+_______________________________________________________________
+> db.system.js.save(
+...  {
+...   _id : 'NextSequence',
+...   value : function (seqOfName){
+... var seqDoc = db.sequence.findAndModify({
+...       query:{_id: sequenceOfName },
+...        update: {$inc:{sequence_value:1}},
+...        new:true
+...      });
+...
+...       return seqDoc.sequence_value;
+... }
+...   });
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : "NextSequence"
+})
+> db.loadServerScripts();
+> db.createCollection("player");
+{ "ok" : 1 }
+> db.player.insert({
+... "_id":NextSequence("item_id"),
+... name:"Lucifer",
+... class:"BE"});
+WriteResult({ "nInserted" : 1 })
+> db.player.insert({ 
+..."_id":NextSequence("item_id"), 
+...name:"Asmodeous", class:"SE"});
+WriteResult({ "nInserted" : 1 })
+> db.player.find();
+{ "_id" : 1, "name" : "Lucifer", "class" : "BE" }
+{ "_id" : 2, "name" : "Asmodeous", "class" : "SE" }
+>
+___________________________________________________________________________________
+Microsoft Windows [Version 10.0.19044.1586]
+(c) Microsoft Corporation. All rights reserved.
 
-3. step 2 create a function 
-------------------------------------------------------------------
-> function getValueForNextSequence(sequenceOfName){
-...  var sequenceDoc = db.student.findAndModify({
-... query:{_id: sequenceOfName },
-... update: {$inc:{sequence_value:1}},
+C:\Users\ldove>set path=D:\mongodb-windows-x86_64-5.0.6\mongodb-win32-x86_64-windows-5.0.6\bin;%path%
+
+C:\Users\ldove>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("69484d78-24cb-4123-93cb-e989bf823743") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-03-22T18:36:12.234+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-03-22T18:36:12.235+05:30: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use mydb
+switched to db mydb
+> show collections;
+EMPLOYEE
+employee
+myCollection
+sequence
+student
+system.js
+user
+> db.createCollection("p1");
+{ "ok" : 1 }
+> db.p1.insert({
+... "_id":NextSequence("item_id"),
+... name:"Lucifer",
+... pos:"Batting"});
+uncaught exception: ReferenceError: NextSequence is not defined :
+@(shell):2:1
+> db.loadServerScripts();
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Lucifer", pos:"Batting"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Asmodeous", pos:"Batting"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Bilial", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Lilith", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Belphego", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.find();
+{ "_id" : 1, "name" : "Lucifer", "pos" : "Batting" }
+{ "_id" : 2, "name" : "Asmodeous", "pos" : "Batting" }
+{ "_id" : 3, "name" : "Bilial", "pos" : "Bowling" }
+{ "_id" : 4, "name" : "Lilith", "pos" : "Bowling" }
+{ "_id" : 5, "name" : "Belphego", "pos" : "Bowling" }
+>
+____________________________________________________________________________________________________________
+//B. Generate values to _id for a student like a university number, ex: if the university is ABC, 
+then the numbers must be ABC1, ABC2, ABC3 and so on, this must also be auto-generate through the 
+javascript function, it must generate the next sequence even if you terminating the database and restart it
+------------------------------------------------------------------------------------------------------------
+> db.createCollection("studentUni");
+{ "ok" : 1 }
+> db.studentUni.insertOne({_id:"Shivaji",seq_value:0});
+{ "acknowledged" : true, "insertedId" : "Shivaji" }
+> db.studentUni.find();
+{ "_id" : "Shivaji", "seq_value" : 0 }
+> db.system.js.save({
+... _id:"nextSeq",
+... value : function(seqOfName){
+... let seqDoc = db.studentUni.findAndModify({
+... query:{_id:seqOfName},
+... update:{$inc:{seq_value:1}},
 ... new:true
 ... });
-... return "ABC"+sequenceDoc.sequence_value;
+... return seqOfName + seqDoc.seq_value;
 ... }
-__________________________________________________________________
-
-4. insert the values 
-----------------------------------------------------------------
-> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Alex", "class":"BE"});
-WriteResult({ "nInserted" : 1 })
-> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Bruce", "class":"SE"});
-WriteResult({ "nInserted" : 1 })
-> db.student.insert({ "_id": getValueForNextSequence("student_id"), "name":"Chris", "class":"FE"});
-WriteResult({ "nInserted" : 1 })
------------------------------output---------------------------
-> db.student.find();
-{ "_id" : "student_id", "sequence_value" : 3 }
-{ "_id" : "ABC1", "name" : "Alex", "class" : "BE" }
-{ "_id" : "ABC2", "name" : "Bruce", "class" : "SE" }
-{ "_id" : "ABC3", "name" : "Chris", "class" : "FE" }
+... });
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "nextSeq" })
+> db.loadServerScripts();
+> db.studentUni.insertOne({'_id':nextSeq('Shivaji'),name:'Lucifer', class:'F.E', div:'B'});
+{ "acknowledged" : true, "insertedId" : "Shivaji1" }
+> db.studentUni.insertOne({'_id':nextSeq('Shivaji'),name:'Lilith', class:'B.E', div:'A'});
+{ "acknowledged" : true, "insertedId" : "Shivaji2" }
+> db.studentUni.insertOne({'_id':nextSeq('Shivaji'),name:'Belphegor', class:'B.E', div:'C'});
+{ "acknowledged" : true, "insertedId" : "Shivaji3" }
+> db.studentUni.insertOne({'_id':nextSeq('Shivaji'),name:'Renin', class:'S.E', div:'D'});
+{ "acknowledged" : true, "insertedId" : "Shivaji4" }
+> db.studentUni.find();
+{ "_id" : "Shivaji", "seq_value" : 4 }
+{ "_id" : "Shivaji1", "name" : "Lucifer", "class" : "F.E", "div" : "B" }
+{ "_id" : "Shivaji2", "name" : "Lilith", "class" : "B.E", "div" : "A" }
+{ "_id" : "Shivaji3", "name" : "Belphegor", "class" : "B.E", "div" : "C" }
+{ "_id" : "Shivaji4", "name" : "Renin", "class" : "S.E", "div" : "D" }
 >
-_________________________________________________________________
+
