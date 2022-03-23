@@ -1,0 +1,19 @@
+Input : CODE :
+-----------------------------------INPUT-----------------------------
+let fs=require('fs');
+let emp = fs.readFileSync('act1.json');
+let jsonString=emp.toString();
+let jsobj=JSON.parse(jsonString);
+for(let i=0;i<jsobj.length;i++){
+    let{id, name, salary}=jsobj[i];
+    console.log(`Name: ${id}, Age: ${name}, Salary: ${salary}`)
+}
+---------------------------------OUTPUT-------------------------------
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act2.js 
+Name: 666, Age: Lucifer, Salary: 66600
+Name: 667, Age: Asmodeous, Salary: 66700
+Name: 668, Age: Bilial, Salary: 66800
+Name: 669, Age: Lilith, Salary: 669000
+Name: 670, Age: Belphegor, Salary: 670000
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> 
+______________________________________________________________________________________________________

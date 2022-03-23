@@ -1,0 +1,53 @@
+Input: CODE 
+-----------------------------------------------code------------------------------------------------
+let read=require('readline-sync');
+let fs=require('fs');
+let id=read.questionInt('Enter your id: ');
+let name=read.question('Enter your name: ');
+let salary=read.questionInt('Enter your salary: ');
+let employee={id:id,name:name,salary:salary};
+let jsonString=JSON.stringify(employee);
+let data=fs.readFileSync('act1.json').toString();
+if(data.endsWith('}]')==true){
+    let d1=data.slice(0,(data.length-1))
+    let d2=`${d1},\n${jsonString}]`
+    fs.writeFileSync('act1.json',d2);
+    console.log('successful...')
+}else{
+    let d2=`[${jsonString}]`
+    fs.writeFileSync('act1.json',d2);
+    console.log('successful...')
+}
+------------------------------------terminal---------------------------------------------------------
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 666
+Enter your name: Lucifer
+Enter your salary: 66600
+successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 667
+Enter your name: Asmodeous
+Enter your salary: 66700
+successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 668
+Enter your name: Bilial
+Enter your salary: 66800
+successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 669
+Enter your name: Lilith
+Enter your salary: 669000
+successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 670
+Enter your name: Belphegor
+Enter your salary: 670000
+successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> 
+-----------------------------------output--------------------------------------------------------------
+[{"id":666,"name":"Lucifer","salary":66600},
+{"id":667,"name":"Asmodeous","salary":66700},
+{"id":668,"name":"Bilial","salary":66800},
+{"id":669,"name":"Lilith","salary":669000},
+{"id":670,"name":"Belphegor","salary":670000}]
