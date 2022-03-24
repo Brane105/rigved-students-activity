@@ -18,6 +18,26 @@ if(data.endsWith('}]')==true){
     fs.writeFileSync('act1.json',d2);
     console.log('successful...')
 }
+------------------------------------------code2----------------------------------------------------
+let read=require('readline-sync');
+let fs=require('fs');
+let data=fs.readFileSync('act1.json');
+let dataString = data.toString();
+let jsArray = undefined;
+if (dataString.length < 1 || dataString == ""){
+    jsArray = [];
+}
+else{
+    jsArray = JSON.parse(dataString)
+}
+let id=read.questionInt('Enter your id: ');
+let name=read.question('Enter your name: ');
+let salary=read.questionInt('Enter your salary: ');
+let emp = {id:id,name:name,salary,salary};
+jsArray.push(emp);
+let jsonArray = JSON.stringify(jsArray);
+fs.writeFileSync("act1.json",jsonArray);
+
 ------------------------------------terminal---------------------------------------------------------
 PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
 Enter your id: 666
@@ -44,6 +64,20 @@ Enter your id: 670
 Enter your name: Belphegor
 Enter your salary: 670000
 successful...
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> 
+-------------------------------terminal for code 2----------------------------------------------------
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 10
+Enter your name: Alex
+Enter your salary: 10000
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 11
+Enter your name: Bruce
+Enter your salary: 11000
+PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> node act1.js
+Enter your id: 12
+Enter your name: Chris 
+Enter your salary: 12000 
 PS C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 22> 
 -----------------------------------output--------------------------------------------------------------
 [{"id":666,"name":"Lucifer","salary":66600},
