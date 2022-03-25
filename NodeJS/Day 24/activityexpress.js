@@ -11,6 +11,9 @@ app.listen(3003,()=>{
     console.log('Server is running on 3003');
 });
 app.get('/',(request,response)=>{
+    response.send("Hello world this is what is get frm .get ! ");
+});
+app.get('/employee',(request,response)=>{
     response.json(jsArray)
 });
 //------------OUTPUT -----------------------
