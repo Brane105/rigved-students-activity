@@ -1,0 +1,9 @@
+h1{
+    box-sizing: border-box;
+    display:flex;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: aqua;
+    border-radius: 2em;
+
+}
