@@ -1,0 +1,9 @@
+table,th,td{
+    border: 1px solid black;
+    background-color: darkorchid;
+}
+p{
+    background-color: rgb(8, 28, 117);
+    width: fit-content;
+    color: white;
+}
