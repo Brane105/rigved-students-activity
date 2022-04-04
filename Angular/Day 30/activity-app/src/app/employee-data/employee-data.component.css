@@ -1,15 +1,30 @@
+h2{
+    padding:0.2em;
+    background: linear-gradient(315deg, #b9bdc7, #e1e3e7);
+    border-radius: 50px;
+    box-shadow:  -20px -20px 60px #bebebe,
+                 20px 20px 60px #eef1f9;
+                 width: fit-content;
+}
+.container{
+    padding: 0.5em;
+    background: linear-gradient(315deg, #325ac1, #90abd3);
+    border-radius: 50px;
+    box-shadow:  -20px -20px 60px #bebebe,
+                 20px 20px 60px #285abf;
+                 width: 500px;
+                 height: 500px;
+}
 div > table{
     padding: 1em ;
-    
     border-radius: 50px;
     background: linear-gradient(315deg, #cacaca, #f0f0f0);
-    box-shadow:  -20px -20px 60px #bebebe,
-                 20px 20px 60px #ffffff;
+    box-shadow:  -20px -20px 60px #3e2e96,
+                 20px 20px 60px #2d2ba6;
                  
 }
 th,td {
     padding: 1em ;
-    
     border-radius: 20px;
     background: linear-gradient(315deg, #cacaca, #f0f0f0);
     box-shadow:  -20px -20px 60px #d8d5d5,
