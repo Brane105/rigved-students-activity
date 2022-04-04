@@ -1,0 +1,28 @@
+<h2>Employee Table</h2>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Gender</th>
+                <th colspan="2">Address</th>            
+            </tr>
+            <tr>
+                <th>
+                    state
+                </th>
+                <th>
+                    city
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let employee of employees'>
+                <td>{{employee.name | honorific:employee.gender}}</td>
+                <td>{{employee.gender | lowercase}}</td>
+                <td>{{employee.address.state}}</td>
+                <td>{{employee.address.city}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
