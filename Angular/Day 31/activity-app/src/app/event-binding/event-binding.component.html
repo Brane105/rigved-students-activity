@@ -1,0 +1,28 @@
+<div class="container">
+    <hr>
+    <h2>Event-binding</h2>
+    <div class="row align-items-start">
+        <div class="col">
+            <p>First Name : <input type="text" #first></p>
+            <p>Last Name : <input type="text" #last></p>
+            <button (click)="save(first.value, last.value)">Save</button>
+        </div>
+        <div class="col">
+            <h2>Users Table</h2>
+            <table class="table table-striped responsive">
+                <thead>
+                    <tr>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{firstname}}</td>
+                        <td>{{lastname}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

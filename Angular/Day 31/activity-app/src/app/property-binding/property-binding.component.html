@@ -1,0 +1,12 @@
+<div class="container">
+<hr>
+<h2>Progress-binding</h2>
+<div class="">
+    <button (click)="toggle()" class="btn btn-primary">Toggle</button>
+    <div>
+        In Progress: {{inProgress}}
+    </div>
+    <button [disabled]="inProgress" class="btn btn-success">Update</button>
+    <p [hidden]="inProgress"> This is the content which is hide</p>
+</div>
+</div>
