@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Student Results</h2>
+    <table class="table">
+        <thead>
+            <tr> 
+                <th> rollNo </th>
+                <th> Name </th>
+                <th> Marks </th>
+            </tr> 
+        </thead>
+        <tbody> 
+          <tr *ngFor= "let student of students"  [ngClass]="{'p':student.marks > 40,'f':student.marks < 40,'a':student.marks == 40}" [class.w]="apply"> 
+            <td> {{student.rollNo}} </td>
+            <td> {{student.name}} </td>
+            <td> {{student.marks}} </td>
+        </tr>
+        <tr>
+        <td><button (click)="applycss()">clear</button></td> 
+        <td><div class="fail"></div>: Fail <div class="pass"></div>: pass <div class="equal"></div>: avg</td> 
+        </tr>
+        </tbody>
+    </table>
+<!--{rollNo:1, name: "Ajay", marks: 40}-->

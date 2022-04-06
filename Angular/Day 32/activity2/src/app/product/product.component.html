@@ -1,0 +1,26 @@
+<h1>Product Table</h1>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Brand</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let product of products">
+                <tr >
+                    <td [attr.rowspan]="product.brand.length">{{product.name}}</td>
+                    <td>{{product.brand[0]}}</td>
+                </tr>
+                <ng-container *ngFor="let brand of product.brand; let i=index;">
+                    <tr *ngIf="i!=0">
+                        <td>{{brand}}</td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+            
+            
+        </tbody>
+    </table>
+</div>

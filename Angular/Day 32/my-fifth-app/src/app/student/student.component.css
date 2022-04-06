@@ -1,0 +1,40 @@
+html{
+    height : 100%
+}
+body{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.p{
+    background-color: green;
+}
+.f{
+    background-color: red;
+}
+.a{
+    background-color: gold;
+}
+.w{
+    background-color: white;
+}
+.fail{
+    border: none ;
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    display: inline-table;
+}
+.pass{
+    border: none ;
+    background-color: green;
+    height: 20px;
+    width: 20px;
+    display: inline-table;
+}
+.equal{
+    border: none ;
+    background-color: gold;
+    height: 20px;
+    width: 20px;
+    display: inline-table;
+}
