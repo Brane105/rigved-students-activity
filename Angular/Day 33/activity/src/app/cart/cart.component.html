@@ -1,0 +1,32 @@
+<h1>Product Order Application</h1>
+<table border="1|1">
+        <tr>
+            <thead>
+                <th>Order Cart</th>
+            </thead>
+            <tbody>
+                <tr><td><h1>Cart Size: {{num}}</h1></td></tr>
+                <tr><td><h1>Total Amount: {{p2}}</h1></td></tr>
+            </tbody>
+            <app-product (data)="num = $event"  (price1)="p2 = $event"></app-product>
+        </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div>
+    
+    
+    
+</div>-->

@@ -1,0 +1,27 @@
+<h2>Product Order </h2>
+<table>
+        <thead>
+        <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let p of products">
+                <tr>
+                        <td>Product Name: {{p.name}}</td>
+                        <td>Price: {{p.price}}</td>
+                        <td><button (click)="add(p.price)">Add</button></td>
+                        <td><button (click)="remov(p.price)">Remove</button></td>
+                </tr>
+        </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
