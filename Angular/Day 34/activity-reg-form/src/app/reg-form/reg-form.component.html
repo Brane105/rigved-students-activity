@@ -1,0 +1,64 @@
+<div class="container">
+    <h1>Registration form with varification</h1>
+    <form #user = "ngForm" (ngSubmit)="formSubmit(user.value)" class="form-control" class="registartion-form">
+        <table class="table table-borderless">
+        <tr>
+            <td><label for="firstname">FirstName:</label></td>
+            <td><input type="text" name="firstname" id="firstname" placeholder="First name" ngModel #tf1 = "ngModel" autocomplete="off" required minlength="3">
+            <br>
+            <span [hidden]="tf1.valid || tf1.pristine">Firstname must be greater or equal to 3 characters</span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="lastname">Lastname:</label></td>
+            <td><input type="text" name="lastname" id="lastname" placeholder="Last name" ngModel #tf2 = "ngModel" autocomplete="off" required minlength="3">
+            <br>
+            <span [hidden]="tf2.valid || tf2.pristine">Lastname must be greater or equal to 3 characters</span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="gender">Gender:</label></td>
+            <td>Male: <input type="radio" name="gender" value="male"  ngModel #tg1="ngModel" required>
+            Female: <input type="radio" name="gender" value="female" ngModel #tg1="ngModel" required>
+            Other: <input type="radio" name="gender" value="other" ngModel #tg1="ngModel" required>
+            <br> <span [hidden]="tg1.valid || tc1.pristine"> Please check atleast one</span>
+        </td>
+        </tr>
+        <tr>
+            <td><label for="skills">Skills:</label></td>
+            <td>Java:<input type="checkbox" name="skills" value="java"
+                ngModel #tc1="ngModel" required>
+                C:<input type="checkbox" name="skills" value="c"  
+                ngModel #tc1="ngModel" required>
+                C++:<input type="checkbox" name="skills" value="c++" 
+                ngModel #tc1="ngModel" required>
+                <br> <span [hidden]="tc1.valid || tc1.pristine"> Please Select atleast one</span></td>
+        </tr>
+        <tr>
+            <td><label for="Qualification">Qualification</label></td>
+            <td>
+            <select name="Qualification" id="Qualification" ngModel #tq1="ngModel" required>
+                <option value="B.E">B.E</option>
+                <option value="MBA">MBA</option>
+                <option value="MTECH">MTECH</option>
+            </select>
+            <br> <span [hidden]="tq1.valid || tq1.pristine"> Please Select atleast one</span>
+        </tr>
+        <tr>
+            <td><label for="address">Address:</label></td>
+            <td><textarea name="address" id="address" placeholder="Write addres..." ngModel #ta1="ngModel" required></textarea>
+                <br> <span [hidden]="ta1.valid || ta1.pristine">  Please give your address</span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input class="btn-grad" type="submit" value="submit" [disabled]="user.invalid"></td>
+        </tr>
+        </table>
+</form>
+<div [hidden]="user.invalid">
+    <p>First Name: {{firstname}}</p>
+    <p>Last Name: {{lastname}}</p>
+    <p>Gender: {{gender}}</p>
+    <p>Skill: {{skills}}</p>
+    <p>Qualification: {{qualification}}</p>
+    <p>Address: {{address}}</p>
+</div>
