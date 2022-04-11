@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="store()" class="Form Control">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+  <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+  <label>
+      Age:
+      <input type="text" formControlName="age">
+    </label>
+
+    <br><br>
+  <button type="submit" class="btn btn-primary">Submit Application</button>
+</form>

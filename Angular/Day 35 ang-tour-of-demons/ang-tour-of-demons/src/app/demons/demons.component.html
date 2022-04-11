@@ -1,0 +1,50 @@
+<hr>
+<p>demons work!</p>
+<h2>{{Demon.name | uppercase}} Details</h2>
+<div><span>id: </span>{{Demon.id}}</div>
+<div><span>name: </span>{{Demon.name}}</div>
+<!--edit the Demon name -->
+<hr>
+<div>
+    <h3>Update below
+    </h3>
+</div>
+<div>
+    <label for="id">id :</label>
+    <input id="id" [(ngModel)]="Demon.id" placeholder="id">
+    
+    <label for="name">Demon name :</label>
+    <input id="name" [(ngModel)]="Demon.name" placeholder="name">
+</div>
+<!---list of Demons-->
+<hr>
+<table>
+<h2>My Demons</h2>
+<ul class="Demons">
+  <li *ngFor="let demonsList of Demons">
+    <span class="badge">{{demonsList.id}}</span> {{demonsList.name}}
+  </li>
+</ul>
+</table>
+<hr>
+<h3>Select your Demon</h3>
+<table>
+<h2>Demon List</h2>
+<ul class="heroes">
+  <li *ngFor="let demon of Demons">
+    <button [class.selected]="demon === selecteddemon" type="button" (click)="onSelect(demon)">
+      <span class="badge">{{demon.id}}</span>
+      <span class="name">{{demon.name}}</span>
+    </button>
+  </li>
+</ul>
+</table>
+<div *ngIf="selecteddemon">
+        <h2>{{selecteddemon.name | uppercase}} Details</h2>
+        <div>id: {{selecteddemon.id}}</div>
+        <div>
+          <label for="demon-name">demon name: </label>
+          <input id="demon-name" [(ngModel)]="selecteddemon.name" placeholder="name">
+        </div>
+    <div>
+<hr>
