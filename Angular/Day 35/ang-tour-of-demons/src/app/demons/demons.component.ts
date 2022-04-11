@@ -22,5 +22,11 @@ export class DemonsComponent implements OnInit {
   onSelect(DEMON: demon ):void{
     this.selecteddemon = DEMON;
   }
+  D = demons;
+  //this is select from the demonlist
+  selectedD? : demon ;
+  onSelect1(D: demon ):void{
+    this.selecteddemon = D;
+  }
   
 }

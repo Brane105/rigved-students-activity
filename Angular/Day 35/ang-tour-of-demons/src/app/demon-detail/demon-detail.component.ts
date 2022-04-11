@@ -11,5 +11,5 @@ export class DemonDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  @Input() d? :demon;
 }

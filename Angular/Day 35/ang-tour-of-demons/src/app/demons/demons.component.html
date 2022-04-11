@@ -48,3 +48,15 @@
         </div>
     <div>
 <hr>
+<table>
+<h2>My Demons</h2>
+<ul>
+  <li *ngFor="let demon of D">
+    <button [class.selected]="demon === selecteddemon" type="button" (click)="onSelect1(demon)">
+      <span class="badge">{{demon.id}}</span>
+      <span class="name">{{demon.name}}</span>
+    </button>
+  </li>
+</ul>
+<app-demon-detail [d]="selecteddemon"></app-demon-detail>
+</table>
