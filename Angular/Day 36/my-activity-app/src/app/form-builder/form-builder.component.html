@@ -1,0 +1,89 @@
+<form [formGroup]="checkForm" (ngSubmit)="onSubmit()" style="width: fit-content;">
+    <!--first and Last Name Block -->
+<!--__________________________________________Firstname___________________________________________________--> 
+    <h2>Validation form Builder</h2>
+    <div class="form-group"  [ngClass]="{'has-error':((checkForm.get('first')?.touched ||
+    checkForm.get('first').dirty) &&
+    checkForm.get('first').errors)}">
+       <label for="first">Firstname</label>
+       <input type="text" id="first" formControlName="first" class="form-control">   
+       <span class="text-danger" *ngIf="((checkForm.get('first').touched ||
+          checkForm.get('first').dirty) &&
+          checkForm.get('first').errors)">
+            <span *ngIf="checkForm.get('first').errors.required">
+              Firstname is required
+            </span>
+            <span *ngIf="checkForm.get('first').errors.minlength ||
+                   checkForm.get('first').errors.maxlength">
+              First Name must be greater than 2 characters and less than 10 characters
+            </span>
+            </span>
+        </div>
+<!--__________________________________________lastname___________________________________________________--> 
+    <div class="form-group" [ngClass]="{'has-error':((checkForm.get('first')?.touched ||
+    checkForm.get('first').dirty) &&
+    checkForm.get('first').errors)}">
+        <label for="last">Lastname</label>
+        <input type="text" id="last" formControlName="last" class="form-control">  
+        <span class="text-danger" *ngIf="((checkForm.get('last').touched ||
+          checkForm.get('last').dirty) &&
+          checkForm.get('last').errors)">
+            <span *ngIf="checkForm.get('last').errors.required">
+              lastname is required
+            </span>
+            <span *ngIf="checkForm.get('last').errors.minlength ||
+                   checkForm.get('last').errors.maxlength">
+              Last Name must be greater than 2 characters and less than 10 characters
+            </span>
+            </span>          
+     </div>
+<!--__________________________________________Address_state_Block___________________________________________________--> 
+    <div formGroupName="address" >
+       <div class="form-group" [ngClass]="{'has-error':((checkForm.get('address.state').touched ||
+       checkForm.get('address.state').dirty) &&
+       checkForm.get('address.state').errors)}">
+          <label for="state">state</label>
+          <input type="text" id="state" value="state" formControlName="state" class="form-control"> 
+          <span class="text-danger" *ngIf="((checkForm.get('address.state').touched ||
+            checkForm.get('address.state').dirty) &&
+            checkForm.get('address.state').errors)">
+              <span class="text-danger" *ngIf="checkForm.get('address.state').errors.required">
+                Enter the State Name
+              </span>
+            </span>           
+       </div>
+<!--__________________________________________city_Block___________________________________________________--> 
+
+       <div class="form-group" div class="form-group" [ngClass]="{'has-error':((checkForm.get('address.city').touched ||
+       checkForm.get('address.city').dirty) &&
+       checkForm.get('address.city').errors)}">
+          <label for="city">City</label>
+          <input type="text" id="city" value="city" formControlName="city" class="form-control">   
+          <span class="text-danger" *ngIf="((checkForm.get('address.city').touched ||
+            checkForm.get('address.city').dirty) &&
+            checkForm.get('address.city').errors)">
+              <span class="text-danger" *ngIf="checkForm.get('address.city').errors.required">
+                Enter the City Name 
+              </span>
+            </span>         
+       </div>
+<!--__________________________________________pin_Block___________________________________________________--> 
+       <div class="form-group" div class="form-group" [ngClass]="{'has-error':((checkForm.get('address.pin').touched ||
+       checkForm.get('address.pin').dirty) &&
+       checkForm.get('address.pin').errors)}">
+          <label for="pin">Pin</label>
+          <input type="number" id="pin" value="pin" formControlName="pin" class="form-control">    
+          <span class="text-danger" *ngIf="((checkForm.get('address.pin').touched ||
+          checkForm.get('address.pin').dirty) &&
+          checkForm.get('address.pin').errors)">
+            <span class="text-danger" *ngIf="checkForm.get('address.pin').errors.required">
+              Enter Valid Pin code 
+            </span> 
+            </span>      
+       </div><br>
+<!--__________________________________________Submit_Block___________________________________________________--> 
+       <div class="form-group">
+        <button class="button" type="submit" class="btn btn-success" [disabled]="checkForm.invalid">Submit</button>
+       </div>
+    </div>
+ </form>

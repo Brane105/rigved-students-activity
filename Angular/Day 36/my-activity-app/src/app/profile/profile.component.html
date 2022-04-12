@@ -1,0 +1,32 @@
+<p>User Profile</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-control">
+      <div formGroupName="name">
+        <label for="firstname">
+            Firstname : <input type="text" formControlName="first" placeholder="First name">
+        </label>
+        <br>
+        <label for="lastname">
+            Lastname : <input type="text" formControlName="last" placeholder="Last name">
+        </label>
+      </div>
+      <div formGroupName="address">
+        <label for="address">Address</label> <br>
+
+        <label for="state">
+            state : <input type="text" formControlName="state" placeholder="MH">
+        </label> <br>
+
+        <label for="city">
+            city : <input type="text" formControlName="city" placeholder="MU"> 
+        </label> <br>
+
+        <label for="pin">
+            pin : <input type="number" formControlName="pin" placeholder="410006">
+        </label>
+      </div> <br>
+      <button type="submit" class="btn btn-success">Submit</button>
+      <br>
+      <button (click)="setPreset()" class="btn btn-primary">Set preset</button>
+    </form>
+    
+    
