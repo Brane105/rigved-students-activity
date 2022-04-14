@@ -1,0 +1,61 @@
+<div>
+    <h3>Update User</h3>
+    Enter Id:<input type="number" [formControl]="id">&nbsp;
+    <input type="button" (click)="getInfo()"  (click)="setProfileValue()" value="Get" >
+</div>
+    <br>
+    
+    <div >
+        <form *ngIf="object" [formGroup]="userForm" (ngSubmit)="updateForm()">
+            <table>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" formControlName="name" class="form-control">
+                    <span class="text-danger" [hidden]="userForm.controls['name'].valid || userForm.controls['name'].pristine">Name is required</span></td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td><input type="radio" name="gender" value="Male" formControlName="gender" >Male
+                    <input type="radio" name="gender" value="Female" formControlName="gender">Female
+                    <span class="text-danger" [hidden]="userForm.controls['gender'].valid || userForm.controls['gender'].pristine">Gender is required</span></td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>
+                    <input type="text" formControlName="phone" class="form-control">
+                    <span class="text-danger" [hidden]="userForm.controls['phone'].valid || userForm.controls['phone'].pristine">Phone number must of 10 digit</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Email Id:</th>
+                <td>
+                    <input type="text" formControlName="email" class="form-control">
+                    <span class="text-danger" [hidden]="userForm.controls['email'].valid || userForm.controls['email'].pristine">Email ID is required</span>
+                </td>
+            </tr>
+            <div formGroupName="address">
+                <h4>Address Details</h4>
+                <tr>
+                    <th>State:</th>
+                    <td>
+                        <input type="text" formControlName="state" class="form-control">
+                        <span class="text-danger" [hidden]="userForm.controls['address'].get('state')?.valid || userForm.controls['address'].get('state')?.pristine">State is required</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>City:</th>
+                    <td><input type="text" formControlName="city" class="form-control">
+                        <span class="text-danger" [hidden]="userForm.controls['address'].get('city')?.valid || userForm.controls['address'].get('city')?.pristine">City is required</span></td>
+                </tr>
+                <tr>
+                    <th>Pin Code:</th>
+                    <td><input type="text" formControlName="pin" class="form-control"> 
+                    <span class="text-danger" [hidden]="userForm.controls['address'].get('pin')?.valid || userForm.controls['address'].get('pin')?.pristine">Pin Code must be of 6 digits</span></td>
+                </tr>
+            </div>
+            <div>
+                <input type="submit" value="Update">
+            </div>
+            </table>
+        </form>
+    </div>

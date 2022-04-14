@@ -1,0 +1,42 @@
+<div>
+    <h3>Store Form</h3>
+    <form [formGroup]="userForm" (ngSubmit)="saveForm()" class="form-control">
+        <div class="form-control" >
+            name : <input type="text" formControlName = "name">
+            <span [hidden]="userForm.controls['name'].valid || userForm.controls['name'].pristine" class="text-danger">name is required</span>
+        </div>
+        <!--<th>Gender:</th>
+                <td>
+                    
+                    </td>-->
+        <div class="form-control">
+            gender : <input type="radio" name="gender" value="Male" formControlName="gender" >Male
+                    <input type="radio" name="gender" value="Female" formControlName="gender">Female
+                    <span class="text-danger" [hidden]="userForm.controls['gender'].valid || userForm.controls['gender'].pristine">Gender is required</span>
+        </div>
+        <div class="form-control">
+            phone : <input type="number" formControlName="phone" name="phone">
+            <span [hidden]="userForm.controls['phone'].valid || userForm.controls['phone'].pristine" class="text-danger">phone is required</span>
+        </div>
+        <div class="form-control">
+            Emai : <input type="email" formControlName="email" name="email">
+            <span [hidden]="userForm.controls['email'].valid || userForm.controls['email'].pristine" class="text-danger">email is required</span>
+        </div>
+        <div formGroupName="address" class="form-control">
+            address : <br>
+            <label for="state">state : <input type="text" formControlName="state" name="state"></label>
+            <span class="text-danger" [hidden]="userForm.controls['address'].get('state')?.valid || userForm.controls['address'].get('state')?.pristine">State is required</span><br>
+            <label for="city">city : <input type="text" formControlName="city" name="city"></label>
+            <span class="text-danger" [hidden]="userForm.controls['address'].get('city')?.valid || userForm.controls['address'].get('city')?.pristine">City is required</span> <br>
+
+            <label for="pin">pin : <input type="number" formControlName="pin" name="pin"></label>
+            <span class="text-danger" [hidden]="userForm.controls['address'].get('pin')?.valid || userForm.controls['address'].get('pin')?.pristine">Pin is required</span>
+        </div>
+        <div class="form-control">
+            <input type="submit" value="submit" >
+        </div>
+        <div class="form-control">
+            <input type="reset" value="reset" >
+        </div>
+    </form>
+</div>
