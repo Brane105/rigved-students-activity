@@ -1,0 +1,20 @@
+<h2 class="alert alert-success">Login Component</h2>
+<div class="container-sm">
+    
+    <form action="" class="form-control" style="width: fit-content;">
+        <table>
+        <tr >
+            <td >Username :<input type="text" [formControl]="username"class = "form-control" ></td>
+        </tr>
+        <tr>
+            <td>Password : <input type="password" [formControl]="password" class = "form-control"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="login" (click)="handleLogin()" class="btn btn-primary"></td>
+        </tr>
+        <tr>
+            <td><a routerLink="/register">Create User</a>/<a routerLink="">home</a></td>
+        </tr>
+    </table>
+    </form>
+</div>

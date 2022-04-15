@@ -1,0 +1,18 @@
+<div>
+    <h3 class="alert alert-success">User List</h3>
+    <table *ngIf = "items" class = "table table-striped">
+        <thead>
+            <tr>
+                <th>User Id</th><th>Name</th><th>password</th><th>phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let user of items">
+                <td>{{user.userId}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.phone}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

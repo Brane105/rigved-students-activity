@@ -1,0 +1,16 @@
+<h2 class="alert alert-success text-center">Success Component</h2>
+<div>
+  <div>
+    <a routerLink = "dashboard">Dashboard</a> |
+    <a routerLink = "list">List</a> |
+    <a routerLink = "/login">Logout</a> |
+    <a routerLink = "">home</a>
+</div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://www.meme-arsenal.com/memes/88ea9ec620171f5406781498c697b266.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf = "username">Hello, {{username}}</h5>
+        </div>
+      </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,30 @@
+<h3 class="alert alert-warning text-center">Register Component</h3>
+<div class="container-sm">
+ 
+  <div class = "row">
+      <div class = "col-5">
+          <form [formGroup] = "userForm" (ngSubmit) = "handleRegister()" class="form-control">
+            <div>
+                userId <input type = "number" formControlName = "userId" class = "form-control">
+            </div>
+              <div>
+                  Name <input type = "text" formControlName = "name" class = "form-control">
+              </div>
+              <div>
+                  Password <input type = "password" formControlName = "password" class = "form-control">
+              </div>
+              <div>
+                  Phone <input type = "number" formControlName = "phone" class = "form-control">
+              </div>
+              <br />
+              <div>
+                  <input type = "submit" value = "Register" class = "btn btn-primary">
+              </div>
+              <br>
+              <div>
+                <a routerLink = "/login">Login</a> | <a routerLink = "">home</a>
+            </div>
+          </form>
+      </div>
+  </div>
+</div>
