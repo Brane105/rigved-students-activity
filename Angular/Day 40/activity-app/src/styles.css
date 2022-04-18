@@ -1,0 +1,156 @@
+html{
+    height: 100%;
+
+}
+body{
+    font-family:'Times New Roman', Times, serif;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+.login{
+    margin-top: 5%;
+    position: relative;
+    width: 400px;
+    height:500px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+    box-shadow: 5px 5px 5px #cbced1, -5px -5px 5px rgb(197, 194, 194);
+}
+h3{text-align: center;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #cacaca, #f0f0f0);
+    box-shadow:  -20px -20px 60px #3e2e96, 20px 20px 60px #2d2ba6;
+    width: 100%;
+}
+.form{
+    padding: 4em ;
+    border-radius: 50px;
+    height: 350px;
+    background: linear-gradient(315deg, #cacaca, #f0f0f0);
+    box-shadow:  -20px -20px 60px #3e2e96,
+                 20px 20px 60px #2d2ba6;
+                 text-align: center;
+}
+h1{
+    border-radius: 50px;
+    box-shadow:  -20px -20px 60px #3e2e96, 20px 20px 60px #2d2ba6;
+    width: 100%;
+}
+h1 {
+	font-family:'Times New Roman', Times, serif;
+	font-size: 6rem;
+	font-weight:  100;
+	letter-spacing: 2px;
+	text-align: center;
+	color: #f35626;
+	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: hue 2s infinite linear;
+}
+
+.parent-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #1f4037;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.parent-menu li {
+    float: left;
+}
+.parent-menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+}
+.parent-menu li a:hover:not(.active) {
+    background: #C6FFDD; 
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+
+}
+.parent-menu .active{
+    background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.parent-container {
+    padding-left: 10px;
+}
+.child-container {
+    padding-left: 10px;
+}
+.sub-child-container {
+    padding-left: 10px;
+}
+.child-menu  {
+    padding-left: 25px;
+}
+.child-menu .active{
+    color: #4CAF50;
+}
+.sub-child-menu {
+    background-color: #f1f1f1;  
+    width: 300px;
+    list-style-type: none;	
+    margin: 0;
+    padding: 0;
+}
+.sub-child-menu .active{
+    color: #4CAF50;
+}
+.error { 
+    color: red;
+    font-size: 20px;
+} 
+button {
+    background-color: red;
+
+  /* will be "on top", if browser supports it */
+  background-image: linear-gradient(red, orange);
+
+  /* these will reset other properties, like background-position, but it does know what you mean */
+  background: red;
+  background: linear-gradient(red, orange);
+} 
+.btn-grad {background-image: linear-gradient(to right, #003973 0%, #E5E5BE  51%, #003973  100%)}
+.btn-grad {
+   margin: 20px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+ .btn-grad:hover {
+   
+ }
+
+.in {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgb(199, 196, 196);
+  }
