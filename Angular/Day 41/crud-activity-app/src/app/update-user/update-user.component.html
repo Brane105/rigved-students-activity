@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <h2 class="alert alert-warning">Update User</h2>
+    <div class="form-control">
+        Id: <input type="number" [formControl]="id">
+    </div><br>
+    <div class="form-control">
+        salary: <input type="number" [formControl]="salary">
+    </div><br>
+    <div class="btn btn-success">
+        <input type="submit" value="Update" (click)="handleUpdate()" class="btn btn-primary">
+    </div>
+    <div>
+        <p *ngIf="users">{{users | json}}</p>
+    </div>
+</div>

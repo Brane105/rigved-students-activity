@@ -1,0 +1,30 @@
+<div>
+<h3 class="alert alert-primary">Find User</h3>
+    <label for="id" class='input-group-text' style="width: fit-content;">
+        Id: <input type="number" [formControl]="_id" class="form-control" style="width: fit-content;">
+    </label>
+    <input type="submit" value="Get" (click)="handleGet(_id.value)" class="btn btn-success">
+    <div>
+        <table class="table table-stripped" cellpadding="10px">
+            <thead>
+                <tr align="center">
+                    <th rowspan="2" >UserId</th><th rowspan="2">Name</th><th rowspan="2">Salary</th>
+                    <th colspan="3">Address</th>
+                </tr>
+                <tr>
+                   <th>State</th><th>City</th><th>pin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="users" style="text-align:center;"> 
+                    <td>{{users._id}}</td>
+                    <td>{{users.name}}</td>
+                    <td>{{users.salary}}</td>
+                    <td>{{users.address.state}}</td>
+                    <td>{{users.address.city}}</td>
+                    <td>{{users.address.pin}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
