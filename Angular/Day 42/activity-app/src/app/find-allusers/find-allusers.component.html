@@ -1,6 +1,8 @@
 <div>
     <h3 class="alert alert-primary">Players List</h3>
     <button (click) = "handleClick()" class="btn btn-success">Refresh</button>
+</div>
+<div>
     <div>
         <table class="table table-dark text-center"> 
             <thead>
@@ -27,3 +29,71 @@
         </table>
     </div>
 </div>
+<div *ngIf="users">
+<div class="panel panel-primary" *ngFor="let user of users">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{user._id}}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-10">
+        <div class="row vertical-align">
+          <div class="col-xs-4">
+            <img class="imageClass" src="https://2.bp.blogspot.com/-xG8wtGFhwd4/WjFWoJpjSPI/AAAAAAAAns0/-UCndX6XnlEsTYS-LeZyXa2_DsgQQlkQgCLcBGAs/s400/mark.png" style="width: 200px;"/>
+          </div>
+          <div class="col-xs-8">
+  
+            <div class="row">
+              <div class="col-xs-6">
+                firstname
+              </div>
+              <div class="col-xs-6">
+                : {{user.firstname}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                lastname
+              </div>
+              <div class="col-xs-6">
+                : {{user.lastname}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                age
+              </div>
+              <div class="col-xs-6">
+                : {{user.age}}
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-xs-6">
+                hobby
+              </div>
+              <div class="col-xs-6">
+                : {{user.hobby.sport}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                state
+              </div>
+              <div class="col-xs-6">
+                : {{user.address.state}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                City
+              </div>
+              <div class="col-xs-6">
+                : {{user.address.city}}
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>

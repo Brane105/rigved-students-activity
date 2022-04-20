@@ -6,8 +6,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+
+  userArray: any[]=[
+    {name:'Lucifer',password:'123',data:[]}
+  ]
+
+  obj:any | undefined=undefined
+  name:any | undefined=undefined
+  password: any | undefined=undefined
+
+  public getUser(): any[]{
+    return this.userArray
+  }
+
   baseUrl : string = "http://localhost:8080/player";
   constructor(private _http: HttpClient) { }
+
+  public saveUser(obj:any):any{
+    console.log('done')
+    let object={name:obj.name,password:obj.password,data:[]}
+    this.userArray.push(object);
+  }
+  
+  public show(nam:any,pass:any){
+    for(let i=0; i<this.userArray.length; i++){
+      if(this.userArray[i].name===nam && this.userArray[i].password===pass){
+        return this.userArray[i].data;
+      }
+    }
+  }
 
   //find all users
   public getUsers() : Observable<any> {

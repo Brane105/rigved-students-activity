@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   username=new FormControl('');
   password=new FormControl('');
-
+  
   handleLogin(){
     let name=this.username.value;
     let pass=this.password.value;

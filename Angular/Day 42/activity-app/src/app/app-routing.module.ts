@@ -8,9 +8,13 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/success.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthenticateGuard } from './auth.guard';
 const routes: Routes = [
   {path: "", component : LoginComponent},
-  {path:"success/:name/:pass",component:SuccessComponent,children:[
+  {path: "login", component : LoginComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"success/:name/:pass",component:SuccessComponent,canActivate:[AuthenticateGuard],children:[
     {path:"",component:HomeComponent},
     {path:"home",component:HomeComponent},
     {path: "store", component:StoreUserComponent},
@@ -18,7 +22,7 @@ const routes: Routes = [
   {path: "findUser", component: FindOneuserComponent},
   {path: "delete", component: DeleteUserComponent},
   {path: "update", component: UpdateUserComponent}, 
-  ]},
+ ]},
 ];
 
 @NgModule({

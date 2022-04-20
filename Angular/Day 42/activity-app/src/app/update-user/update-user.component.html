@@ -1,15 +1,19 @@
 <div class="container-fluid">
-    <h2 class="alert alert-warning">Update User</h2>
-    <div class="form-control">
-        Id: <input type="number" [formControl]="id">
+    <h2 class="alert alert-warning">Update Player</h2>
+<div  style="width: fit-content;margin-left: 50px;">
+    <div class="form-group" >
+        <label for="id" >Id</label>
+        <input class="form-control" type="number" [formControl]="id" placeholder="Enter here">
     </div><br>
-    <div class="form-control">
-        age: <input type="number" [formControl]="age">
+    <div class="form-group" >
+        <label for="id" >age:</label>
+        <input class="form-control" type="number" [formControl]="age" placeholder="Enter here">
     </div><br>
     <div class="btn btn-success">
         <input type="submit" value="Update" (click)="handleUpdate()" class="btn btn-primary">
     </div>
-    <div>
-        <p *ngIf="users">{{users | json}}</p>
-    </div>
+</div>
+<div>
+    <p *ngIf="users">{{users | json}}</p>
+</div>
 </div>

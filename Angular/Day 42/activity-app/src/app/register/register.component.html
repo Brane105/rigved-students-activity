@@ -1,0 +1,46 @@
+<!-- <div class="container-fluid">
+    <h2 class="alert alert-primary">Register Page</h2>
+    <div class="col-4">
+        <form [formGroup]="register" (ngSubmit)="handleRegister()">
+            <div class="form-control">
+                Username: <input type="text" formControlName="name" class="form-control">
+                <span [hidden]="register.controls['name'].pristine || register.controls['name'].valid" class="text-danger">Username Required</span>
+            </div>
+            <div class="form-control">
+                Password: <input type="password" formControlName="password" class="form-control">
+                <span [hidden]="register.controls['password'].pristine ||register.controls['password'].valid" class="text-danger">Password Required</span>
+            </div>
+            <div>
+                <input type="submit" value="Register" class="form-control btn btn-success" [disabled]="register.invalid">
+            </div>
+        </form>
+        <div>
+                <a routerLink="/login" class="form-control btn btn-success">Login</a>
+        </div>
+    </div>
+</div> -->
+<div class="limiter" id="login">
+    <div class="container-login100" style="background-image:url(https://wallpapercave.com/wp/wp4012115.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="login_topimg"> </div>
+                    <div class="wrap-login100">
+                        <form class="login100-form validate-form" [formGroup]="register" (ngSubmit)="handleRegister()"> <span class="login100-form-title "> Register  </span> <span class="login100-form-subtitle m-b-16"> to get account </span>
+                            <!-- username -->
+                            <div class="wrap-input100 validate-input m-b-16"> <input class="input100" type="text" formControlName="name" placeholder="Username"><span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> <span [hidden]="register.controls['name'].pristine || register.controls['name'].valid" class="text-danger">Username Required</span>
+                            <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                            <!-- password -->
+                            <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" formControlName="password" name="pass" placeholder="Password"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> <span [hidden]="register.controls['password'].pristine ||register.controls['password'].valid" class="text-danger">Password Required</span> </div>
+                            <!-- button -->
+                            <div class="container-login100-form-btn p-t-25"> <button class="login100-form-btn" type="submit" value="Register" [disabled]="register.invalid"> register </button></div>
+                            <!-- register -->
+                            <div class="link link-primary" style="margin-left: 350px;" > <a routerLink="/login"> login </a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
