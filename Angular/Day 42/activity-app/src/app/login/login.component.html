@@ -1,0 +1,14 @@
+<div class="form-control" style="width: fit-content;">
+    <h2 class="alert alert-success">Login Page</h2>
+    <div>
+        <div class="form-control">
+            Username: <input type="text" [formControl]="username" class="form-control">
+        </div>
+        <div class="form-control">
+            Password: <input type="password" [formControl]="password" class="form-control">
+        </div>
+        <div>
+            <input type="submit" value="Login" (click)="handleLogin()" class="form-control btn-success"> 
+        </div>
+    </div>
+</div>

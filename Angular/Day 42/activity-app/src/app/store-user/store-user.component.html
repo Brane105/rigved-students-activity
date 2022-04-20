@@ -1,0 +1,47 @@
+<h3 class="alert alert-success">User Form</h3>
+<div class="row mb-3" class="form-control" style="width: fit-content;"> 
+    <form [formGroup] = "userForm" (ngSubmit) = "handleSubmit()">
+        <div class="form-control">
+            <label>
+                Id: <input type = "number" formControlName = "_id">
+            </label>
+        </div>
+        <div class="form-control">
+            <label>
+                Firstname: <input type = "text" formControlName = "firstname">
+            </label>
+        </div>
+        <div class="form-control">
+            <label>
+                Lastname: <input type = "text" formControlName = "lastname">
+            </label>
+        </div>
+        <div class="form-control">
+            <label>
+                age: <input type = "number" formControlName = "age">
+            </label>
+        </div>
+        <div formGroupName="hobby" class="form-control">
+            <label>
+                sport: <input type = "text" formControlName = "sport">
+            </label>
+        </div >
+        <div formGroupName="address" class="form-control">
+            <label>
+                state: <input type = "text" formControlName = "state">
+            </label>
+        </div >
+        <div formGroupName="address" class="form-control">
+            <label>
+                city: <input type = "text" formControlName = "city">
+            </label>
+        </div>
+        <div class="form-control">
+            <input type = "submit" value = "Regsiter" class="btn btn-success">
+        </div>
+    </form>
+    <div>
+        Info: <p *ngIf = "info">{{info | json}}</p>
+        <p *ngIf = "info">Inserted Id: {{info?.insertedId}}</p>
+    </div>
+</div>

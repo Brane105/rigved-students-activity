@@ -1,0 +1,29 @@
+<div>
+    <h3 class="alert alert-primary">Players List</h3>
+    <button (click) = "handleClick()" class="btn btn-success">Refresh</button>
+    <div>
+        <table class="table table-dark text-center"> 
+            <thead>
+                <tr align="center">
+                    <th rowspan="2" >UserId</th><th rowspan="2">FirstName</th><th rowspan="2">Lastname</th>
+                    <th rowspan="2">Age</th><th>hobby</th>
+                    <th colspan="2">Address</th>
+                </tr>
+                <tr>
+                    <th>sport</th><th>State</th><th>City</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="users">
+                <tr *ngFor="let user of users" style="text-align: center;"> 
+                    <td>{{user._id}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.hobby.sport}}</td>
+                    <td>{{user.address.state}}</td>
+                    <td>{{user.address.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

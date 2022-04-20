@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <h3 class="alert alert-warning">Delete User</h3>
+    <div class="input-group-text" style="width: fit-content;">
+        Id: <input type="number" [formControl]="_id" class="form-control" style="width: fit-content;">
+    </div>
+    <br>
+    <input type="submit" value="Delete" (click)="handleGet(_id.value)" class="btn btn-danger">
+    <div>
+        <p *ngIf="users">Get Id users: {{users | json}}</p>
+    </div>
+</div>
