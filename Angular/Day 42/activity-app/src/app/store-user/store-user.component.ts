@@ -21,7 +21,7 @@ export class StoreUserComponent implements OnInit {
       sport:[]
     }),
     address:this._builder.group({
-      state:[],city:[],pin:[]
+      state:[],city:[]
     })
   });
   handleSubmit() {
